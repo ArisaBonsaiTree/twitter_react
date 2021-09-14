@@ -8,54 +8,47 @@ import {FcLike} from 'react-icons/fc'
 
 // Clicking on the like button makes it glow
 import {FaRegComment, FaRegHeart, FaHeart} from 'react-icons/fa'
-import { useGlobalContext } from "../context";
+import { useGlobalContext } from "./context";
 
-import { setData } from "../context";
+import { setData } from "./context";
 
 import { Link } from "react-router-dom";
 
+import LikeButton from './LikeButton';
 
 const Tweets = ({tweets}) =>{
 
-    // const [like, setLike] = useState(false)
-    // const [hearts, setHeart] = useState(likes)
-    
-    // const heartClicked = (e) =>{
-    //     setLike(!like)
-    //     {like ? setHeart(hearts - 1) : setHeart(hearts + 1)}
-    // }
-
-    // Reverse the map and pass it on below to render them
     const mapped = [...tweets].reverse().map(a => a)
+    
 
+    // const [like, setLike] = useState(...tweets)
+
+    
+    const {like, setLike, heartClicked} = useGlobalContext();
+    
+
+    
     return(
-            <>
-                
+            <>  
                 {/* {tweets.map((mapped)=>{ */}
-                {mapped.map((mapped)=>{
-                    const {id, title} = mapped;
+                {mapped.map((mapped)=>{        
+                    const {id, username, img, msg, likes} = mapped;                
                     return(
-                        <div className="tweetPlacement">
-                        {/* // <img src={img} alt="Blank"/> */}
+                        <div key={id} className="tweetPlacement">
+                        <Link to={{pathname: `/profile/${id}`, state: {msg: `${msg}`} }}>
+                            <img src={img} alt="Blank"/>
+                        </Link>
+                        
                 
                         <div className="text-tweet">
-                        {/* <div className='userName'>{username}</div> */}
-                            <p>{title}</p>
-                        <Link to={`/profile/${id}`}View Profile/>
-                            {/* <Link to={
-                                    { 
-                                        pathname: "/product/" + this.props.product.Id,
-                                        myCustomProps: product
-                                    }
-                                }>
-                                {Name}
-                            </Link> */}
+                        <div className='userName'>
+                            {/* You will need to edit Routes in App.js to allow this */}
+                            <Link to={{pathname: `/profile/${id}`, state: {msg: `${msg}`} }}>{username}</Link>
+                        </div>
+                            <p>{msg}</p>
                             <div className="icons-tweet">
-                                {/* <button className='like-button' onClick={heartClicked}> */}
-                            {/* {like ? <FcLike/>:<FaRegHeart/>} */}
-                            {/* {hearts} */}
-                        {/* </button> */}
-                        {/* <Link to={`/profile/${id}`} onClick={setTweet} >View Profile</Link> */}
+                                <LikeButton likeInfo={{likes}}/>
+                                
                             </div> 
                         </div> 
                         </div>
@@ -65,6 +58,12 @@ const Tweets = ({tweets}) =>{
     )
 }
 
+
+{/* <button className='like-button' onClick={heartClicked}>                      
+                                    {like ? <FcLike/>:<FaRegHeart/>} 
+                                    {likes}
+                                    {hearts}  
+                                </button> */}
 
 export default Tweets
 

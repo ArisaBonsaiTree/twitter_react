@@ -180,7 +180,7 @@ p {
   position: relative;
   width: 90vw;
   margin: 0 auto;
-  max-width: 35rem;
+  max-width: 41rem;
   margin-top: 2rem;
   /* background-color: aqua;  */
 }
@@ -249,6 +249,43 @@ p {
   content: var(--clr-primary-5);
   transition: var(--transition);
   font-size: 0.85rem;
+}
+
+
+
+/***********************
+/********* SingleProfile *****
+/*  */
+.background-picture {
+
+}
+
+.background-picture img{
+  width: 100vh;
+
+
+}
+
+.profile-picture{
+
+}
+
+.profile-picture img{
+  border-radius: 50%;
+  width: 2rems;
+  height: 2rems;
+}
+
+.profile-info{
+  
+}
+
+.following-followers{
+
+}
+
+.tweets-display{
+
 }
 
 

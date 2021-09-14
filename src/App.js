@@ -13,7 +13,7 @@ function App(){
       <Router>
         <Switch>
           <Route exact path='/'><Home/></Route>
-          <Route path='/profile/:id'><SingleProfile/></Route>
+          <Route path={'/profile/:id'} component={SingleProfile}><SingleProfile/></Route>
           <Route path='*'><Error/></Route>
         </Switch>
       </Router>

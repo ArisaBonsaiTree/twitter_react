@@ -5,7 +5,7 @@ const tweets = [
     {
         id: 1,
         username: 'Mike',
-        img: '/Images/one.jpg',
+        img: "/Images/one.jpg",
         msg: 'Good morning everyone!',
         likes: 2
     },
@@ -44,7 +44,6 @@ const tweets = [
         msg: 'Who wants to play chess against me?',
         likes: 0
     },
-    
     {
         id: 7,
         username: 'Cinnamon',

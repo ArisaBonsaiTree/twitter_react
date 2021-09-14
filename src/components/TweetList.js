@@ -42,7 +42,6 @@ const TweetList = () => {
   useEffect(()=>{
     localStorage.setItem('list', JSON.stringify(tweets))
     // setTweets([])
-    console.log('I am called')
   },[tweets])
 
   
@@ -55,7 +54,16 @@ const TweetList = () => {
   
   const tweetTheFiles = () => {
     hardCodedTweets.map((item)=>{
-      const newItem = {id: item.id, title: item.msg}
+      console.log(item)
+
+      const newItem = {
+        id: item.id, 
+        username: item.username,
+        img: item.img,
+        msg: item.msg,
+        likes: item.likes,
+      }
+      
       // ! Add Delay to useState
       setTweets(tweets => ([...tweets, newItem]))
     })
@@ -78,7 +86,7 @@ const TweetList = () => {
     e.preventDefault()
     
     // Name is what we are getting and sending title is the official name
-    const newItem = {id: new Date().getTime().toString(), title: msg};
+    const newItem = {id: new Date().getTime().toString(), msg: msg};
     setTweets([...tweets, newItem])
     setMsg('')
   } 
