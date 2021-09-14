@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaTimes } from 'react-icons/fa'
-import { social, links } from './dataIcons'
+import { social, links } from '../dataIcons'
 import { FaTwitter } from 'react-icons/fa'
 import { FaFeatherAlt } from 'react-icons/fa'
 

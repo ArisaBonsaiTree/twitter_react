@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 =============== 
 Variables
@@ -119,50 +120,15 @@ p {
   }
 }
 
+/***********************************************************************
 
-/** Personal styles */
-
-
-.container{
-  display: flex;
-  flex-direction: row;
-}
-
-.btn {
-  text-transform: uppercase;
-  background: transparent;
-  color: var(--clr-black);
-  padding: 0.375rem 0.75rem;
-  letter-spacing: var(--spacing);
-  display: inline-block;
-  transition: var(--transition);
-  font-size: 0.875rem;
-  border: 2px solid var(--clr-black);
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  border-radius: var(--radius);
-}
-.btn:hover {
-  color: var(--clr-white);
-  background: var(--clr-black);
-}
-/* section */
-.section {
-  padding: 5rem 0;
-}
+/***********************
+/********* Sidebar *****
+/*  */
 
 
-.section-center {
-  position: fixed;
-  left: 15%;
-  width: 90vw;
-  margin: 0 auto;
-  max-width: 35rem;
-  margin-top: 2rem;
-  /* background-color: aqua;  */
-}
 
-/* The div that holds it all */
+/* Main Div that holds the Sidebar */
 .section-start {
   position: fixed;
   width: 15%;
@@ -173,27 +139,7 @@ p {
   
 }
 
-.userIcons{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 100px;
-  font-size: 1.5rem;
-  margin: 0 0.5rem;
-  color: var(--clr-primary-5);
-  transition: var(--transition);
-}
-
-
-
-.social-icons .twitter-icon {
-  margin-left: 20%;
-}
-
-.social-icons .feather-icon {
-  margin-left: 20%;
-}
-
+/* Icons that are displayed */
 .social-icons {
   justify-self: center;
   display: flex;
@@ -208,6 +154,7 @@ p {
   transition: var(--transition);
 }
 
+/* OVerall style for the icons */
 .social-icons a {
   margin-top: 100px;
   font-size: 1.5rem;
@@ -216,20 +163,54 @@ p {
   transition: var(--transition);
 }
 
+/* Minor Tweeks to the location */
+.social-icons .twitter-icon {
+  margin-left: 20%;
+}
+
+.social-icons .feather-icon {
+  margin-left: 20%;
+}
+
+/***********************
+/********* TweetList *****
+/*  */
+
+/* The entire section that holds our Tweets */
+.section-center {
+  position: relative;
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 35rem;
+  margin-top: 2rem;
+  /* background-color: aqua;  */
+}
+
+/* Little style for h3 */
 .tweet-form h3 {
   color: var(--clr-primary-1);
   margin-bottom: 1.5rem;
   text-align: flex-start;;
 }
 
-
+/* Moving the location of our form */
 .form-control{
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
 }
 
-.tweet{
+/* PFP of our account */
+.pfp{
+  width: 4em;
+  height: 4em;
+  margin-left: 0.2rem;
+  margin-top: 0.2rem;
+  border-radius: 50%;
+}
+
+/* Style for our Input */
+.input-style {
   padding: 0.25rem;
   padding-left: 1rem;
   background: var(--clr-grey-10);
@@ -241,9 +222,45 @@ p {
   color: var(--clr-grey-5);
 }
 
-.tweet-container{
-  margin-top: 2rem;
+/* Handle the location of the Tweet button */
+.userIcons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 100px;
+  font-size: 1.5rem;
+  margin: 0 0.5rem;
+  color: var(--clr-primary-5);
+  transition: var(--transition);
 }
+
+/* Tweet Button Style */
+.submit-btn {
+  background: var(--clr-primary-8);
+  border-color: transparent;
+  flex: 0 0 5rem;
+  display: grid;
+  align-items: center;
+  padding: 0.25rem;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  border-top-right-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+  cursor: pointer;
+  content: var(--clr-primary-5);
+  transition: var(--transition);
+  font-size: 0.85rem;
+}
+
+
+/***********************
+/********* Tweets *****
+/*  */
+
+
+/***********************
+/********* Context *****
+/*  */
 
 /** What holds the tweet together */
 .tweetPlacement{
@@ -258,13 +275,7 @@ p {
   margin-left: 0.2rem;
 }
 
-.pfp{
-  width: 4em;
-  height: 4em;
-  margin-left: 0.2rem;
-  margin-top: 0.2rem;
-  border-radius: 50%;
-}
+
 
 /* * img of said tweet */
 .tweetPlacement img{
@@ -293,33 +304,52 @@ p {
   justify-content: flex-start;
 }
 
-/* Fix later */
 
-.submit-btn {
-  background: var(--clr-primary-8);
-  border-color: transparent;
-  flex: 0 0 5rem;
-  display: grid;
-  align-items: center;
-  padding: 0.25rem;
-  text-transform: capitalize;
-  letter-spacing: 2px;
-  border-top-right-radius: var(--radius);
-  border-bottom-right-radius: var(--radius);
-  cursor: pointer;
-  content: var(--clr-primary-5);
+/***********************
+/********* General *****
+/*  */
+
+.btn {
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--clr-black);
+  padding: 0.375rem 0.75rem;
+  letter-spacing: var(--spacing);
+  display: inline-block;
   transition: var(--transition);
-  font-size: 0.85rem;
+  font-size: 0.875rem;
+  border: 2px solid var(--clr-black);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius);
+}
+.btn:hover {
+  color: var(--clr-white);
+  background: var(--clr-black);
 }
 
-.grocery {
-  padding: 0.25rem;
-  padding-left: 1rem;
-  background: var(--clr-grey-10);
-  border-top-left-radius: var(--radius);
-  border-bottom-left-radius: var(--radius);
-  border-color: transparent;
-  font-size: 1rem;
-  flex: 1 0 auto;
-  color: var(--clr-grey-5);
+/***********************
+/********* App *****
+/*  */
+
+.container{
+  display: flex;
+  flex-direction: row;
 }
+
+
+=======
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+>>>>>>> Initialize project using Create React App

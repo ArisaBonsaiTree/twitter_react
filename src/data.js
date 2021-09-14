@@ -1,3 +1,6 @@
+// > Data of our Tweets
+// ? Need to be able to live update them
+
 const tweets = [
     {
         id: 1,
