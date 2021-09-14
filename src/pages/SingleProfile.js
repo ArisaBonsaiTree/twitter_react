@@ -23,15 +23,16 @@ const SingleProfile = (props) =>{
         <>
             <Sidebar/>
         
-            <section className="section-center">
+            <section className="single-section-center">
                 <div className="background-picture">
                     <img src='/Images/backGround.jpeg' alt="Hello" />
                 </div>
                 <div className="profile-picture">
-                    <img src="/Images/barbruh.jpg" alt="" />
+                    <img src={location.state.img} alt="" />
                 </div>
                 <div className="profile-info">
-                <h1>Welcome</h1>
+                    <h4>{location.state.username}</h4>
+                    <h5>@{location.state.username}</h5>
                 </div>
                 <div className="following-followers">
 
