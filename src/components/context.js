@@ -28,7 +28,7 @@ const AppProvider = ({children}) => {
             img: '/Images/lumine.png', 
             bgImg: '/Images/backGround.jpeg',
             msg: 'PlaceHolder',
-            profileText: 'Hoping to complete 100 days of code',
+            profileText: 'Learning how to code and hopefully can complete 100 days of code',
             likes: 0
         }
     )

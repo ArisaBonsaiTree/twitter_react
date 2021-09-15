@@ -23,7 +23,9 @@ const Sidebar = () => {
     <div className="social-icons">
         <ul>
             <li>
-                <FaTwitter className='twitter-icon'/>
+                <a href="/">
+                    <FaTwitter className='twitter-icon'href="/"/>
+                </a>
             </li>
 
             <li>
