@@ -23,13 +23,14 @@ const LikeButton = ({likeInfo}) => {
 
 
     return(
-        <>
-            <button className='like-button' onClick={heartClicked}>
-            {like ? <FcLike/>:<FaRegHeart/>} {hearts}
-                
-            </button>
-            
-        </>
+        <div className="holdLikes">
+            {like ? 
+            <FcLike className='like-button' onClick={heartClicked}/>
+            :
+            <FaRegHeart className='like-button' onClick={heartClicked}/>} 
+            <span className='heart-count'>{hearts}</span>
+        </div>
+        
     )
 }
 

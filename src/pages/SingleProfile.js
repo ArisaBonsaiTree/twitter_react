@@ -2,6 +2,9 @@ import React from "react";
 import { useParams, Link, useLocation } from "react-router";
 import data from '../data'
 import Sidebar from '../components/Sidebar'
+import DisplayTweets from "../components/DisplayTweets";
+import { useGlobalContext } from "../components/context";
+import Tweets from "../components/Tweets";
 
 // id, accountNum, username, handleName, img, msg, profileText, likes
 const SingleProfile = (props) =>{
@@ -9,14 +12,15 @@ const SingleProfile = (props) =>{
     
 
     const [tweet, setTweet] = React.useState(null)
-    
+    const{syncTweets, setSyncTweets} = useGlobalContext()    
     
 
-    React.useEffect(()=>{
-        function getTweet(){
-            console.log(data[0])
-        }
+    const filterTweets = data.filter((search)=>{
+        return location.state.accountNum === search.accountNum
     })
+
+    
+    
     
     
     
@@ -40,9 +44,18 @@ const SingleProfile = (props) =>{
                 </div>
                 <div className="following-followers">
                     <p>0 Following  0 Followers</p>
+                    
                 </div>
                 <div className="tweets-display">
-                    
+                    {/* <DisplayTweets tweets={syncTweets, location.state.accountNum}/> */}
+
+                    {filterTweets.length > 0 && (
+                        <div className='profile-container'>
+                            <Tweets tweets={filterTweets}/> 
+                        </div>
+                    )}    
+
+
                 </div>                
             </section>
         </>

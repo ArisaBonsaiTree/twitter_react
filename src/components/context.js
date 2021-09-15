@@ -17,7 +17,14 @@ const AppProvider = ({children}) => {
     const [like, setLike] = useState(false)
 
 
+    const [homePage, setHomePage] = useState(false)
+    const [profilePage, setProfilePage] = useState(false)
+
+
     const [myID, setMyId] = useState(null)
+
+
+    const [syncTweets, setSyncTweets] = useState([])
     
     // ? Use this to allow you to go to your profile
     const [mainAccount, setMainAccount] = useState({
@@ -43,6 +50,12 @@ const AppProvider = ({children}) => {
     return (
         <AppContext.Provider
             value={{
+                homePage,
+                setHomePage,
+                profilePage,
+                setProfilePage,
+                syncTweets,
+                setSyncTweets,
                 FaRegComment,
                 FaRegHeart,
                 FaHeart,

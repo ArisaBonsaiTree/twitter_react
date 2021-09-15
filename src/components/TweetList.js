@@ -41,17 +41,21 @@ const TweetList = () => {
 
   const [editID, setEditID] = useState(null)
 
-  const {myID, setMyId, mainAccount, setMainAccount} = useGlobalContext()
+  const {myID, setMyId, mainAccount, setMainAccount, setSyncTweets} = useGlobalContext()
 
   //* Update the local storage when we update list
   useEffect(()=>{
     localStorage.setItem('list', JSON.stringify(tweets))
     // setTweets([])
+    // * Place the tweets in backup to access somewhere else
+    setSyncTweets([...tweets])
+
   },[tweets])
 
   
   const removeTweets = () => {
     setTweets([])
+    setSyncTweets([])
   }
 
   // Use this for the Hard coded tweets

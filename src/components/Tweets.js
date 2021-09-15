@@ -37,6 +37,7 @@ const Tweets = ({tweets}) =>{
                         <div key={id} className="tweetPlacement">
                         <Link to={{pathname: `/profile/${accountNum}`, state: {id, accountNum, username, handleName, img, msg, bgImg, profileText, likes} }}>
                             <img src={img} alt="Blank"/>
+                            
                         </Link>
                         
                 

@@ -179,7 +179,7 @@ Global Styles
     .profile-btn{
         margin:  0 0;
         margin-top: 1.3rem;
-        margin-left: 1.5rem;
+        margin-left: 1.1rem;
         width: 4rem;
         height: 2rem;
     }
@@ -212,7 +212,27 @@ Global Styles
     }
 }
 
+.holdLikes{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
+
+    
+    .like-button{
+        width: 1rem;
+        
+
+        &:hover{
+            color: red;
+        }
+    }
+    .heart-count{
+        margin-left: .6rem;
+        
+    }
+
+}
 
 
 
@@ -459,6 +479,13 @@ Global Styles
     }
 }
 
+// * CSS for the Tweets in our Profile page
+.profile-container{
+    width: 60vw;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 25%;
+}
 
 //**********************
 //******** App *****

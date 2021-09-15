@@ -5,14 +5,24 @@ import { social, links } from '../dataIcons'
 import { FaTwitter } from 'react-icons/fa'
 import { FaFeatherAlt } from 'react-icons/fa'
 
-import {AiOutlineHome} from 'react-icons/ai'
+import {AiOutlineHome, AiFillHome} from 'react-icons/ai'
+
+import {AiOutlineUser} from 'react-icons/ai'
+import {FaUserAlt} from 'react-icons/fa'
+
+import {HiOutlineUser} from 'react-icons/hi'
+import {ImUser} from 'react-icons/im'
+
+
 
 import { AppContext, useGlobalContext } from './context'
 import { Link } from 'react-router-dom';
 
 
 const Sidebar = () => {
-    const {mainAccount, setMainAccount} = useGlobalContext()
+    const {mainAccount, setMainAccount, homePage, setHomePage, profilePage, setProfilePage} = useGlobalContext()
+    // const {setHomePage, setProfilePage} = useGlobalContext()
+
     const {id, accountNum, username, handleName, img, msg, bgImg, profileText, likes} = mainAccount;
     return (
 
@@ -28,12 +38,13 @@ const Sidebar = () => {
                 </a>
             </li>
 
-            <li>
-                <AiOutlineHome className='home-btn'/>
-                <a href="/"> Home</a>
+            <li>            
+                {homePage ? <AiFillHome className='home-btn'/> : <AiOutlineHome className='home-btn'/>}
+                <a href="/">Home</a>
             </li>
             <li>
-                <FaUserFriends className='profile-btn'/>
+                {profilePage ? <ImUser className='profile-btn'/> : <HiOutlineUser className='profile-btn'/>}
+                {/* <FaUserFriends className='profile-btn'/> */}
                 <Link to={{pathname: `/profile/${accountNum}`, 
                     state: {id, accountNum, username, handleName, img, msg, bgImg, profileText, likes} }}>
                     Profile
