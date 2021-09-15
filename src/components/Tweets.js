@@ -32,10 +32,10 @@ const Tweets = ({tweets}) =>{
             <>  
                 {/* {tweets.map((mapped)=>{ */}
                 {mapped.map((mapped)=>{        
-                    const {id, username, img, msg, likes} = mapped;                
+                    const {id, accountNum, username, handleName, img, msg, bgImg, profileText, likes} = mapped;                
                     return(
                         <div key={id} className="tweetPlacement">
-                        <Link to={{pathname: `/profile/${id}`, state: {id, username, img, msg, likes} }}>
+                        <Link to={{pathname: `/profile/${accountNum}`, state: {id, accountNum, username, handleName, img, msg, bgImg, profileText, likes} }}>
                             <img src={img} alt="Blank"/>
                         </Link>
                         
@@ -43,7 +43,7 @@ const Tweets = ({tweets}) =>{
                         <div className="text-tweet">
                         <div className='userName'>
                             {/* You will need to edit Routes in App.js to allow this */}
-                            <Link to={{pathname: `/profile/${id}`, state: {id, username, img, msg, likes} }}>{username}</Link>
+                            <Link to={{pathname: `/profile/${accountNum}`, state: {id, accountNum, username, handleName, img, msg, bgImg, profileText, likes} }}>{username}</Link>
                         </div>
                             <p>{msg}</p>
                             <div className="icons-tweet">

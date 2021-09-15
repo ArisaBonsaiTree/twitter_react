@@ -15,7 +15,23 @@ const AppContext = React.createContext();
 const AppProvider = ({children}) => {
     
     const [like, setLike] = useState(false)
+
+
+    const [myID, setMyId] = useState(null)
     
+    // ? Use this to allow you to go to your profile
+    const [mainAccount, setMainAccount] = useState({
+            id: 29,
+            accountNum: 29,
+            username: 'barbaraJr2',
+            handleName: '@barbaraJr2',
+            img: '/Images/lumine.png', 
+            bgImg: '/Images/backGround.jpeg',
+            msg: 'PlaceHolder',
+            profileText: 'Hoping to complete 100 days of code',
+            likes: 0
+        }
+    )
 
     const heartClicked = (e) => {
         setLike(!like)
@@ -32,7 +48,11 @@ const AppProvider = ({children}) => {
                 FaHeart,
                 like,
                 setLike,
-                heartClicked
+                heartClicked,
+                myID,
+                setMyId,
+                mainAccount, 
+                setMainAccount
             }}>
                 {children}
             </AppContext.Provider>
