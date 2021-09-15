@@ -2,10 +2,13 @@ import React, {useState, useEffect} from "react";
 import data from '../data'
 import Tweets from './Tweets'
 import {GrImage} from 'react-icons/gr'
-
+import { useGlobalContext } from "./context";
 // ? Random user API ~~ Could use later
 const url = 'https://randomuser.me/api/'
 
+
+//^ import { AppContext, useGlobalContext } from './context'
+//^ const {isModalOpen, closeModal} = useGlobalContext() 
 
 // ? Allows us to store the Data in localStorage to save the Tweets
 const getLocalStorage = () => {
@@ -38,6 +41,8 @@ const TweetList = () => {
 
   const [editID, setEditID] = useState(null)
 
+  const {myID, setMyId, mainAccount, setMainAccount} = useGlobalContext()
+
   //* Update the local storage when we update list
   useEffect(()=>{
     localStorage.setItem('list', JSON.stringify(tweets))
@@ -57,36 +62,56 @@ const TweetList = () => {
       console.log(item)
 
       const newItem = {
-        id: item.id, 
+        id: item.id,
+        accountNum: item.accountNum,
         username: item.username,
+        handleName: item.handleName,
         img: item.img,
         msg: item.msg,
-        likes: item.likes,
+        bgImg: item.bgImg,
+        profileText: item.profileText,
+        likes: item.likes
+        
       }
       
       // ! Add Delay to useState
       setTweets(tweets => ([...tweets, newItem]))
     })
-    
-
-    // for(let i = 0; i < 7; i++){
-    //   let newItem = {id: hardCodedTweets[i].id, title: hardCodedTweets[i].msg}
-    //   // ! Solution to allow us to set more tweets
-    //   // ? However, if you want to merge the response with the previously existing values, 
-    //   // ? you must use the callback syntax of state updation along with the correct use of spread syntax like
-      
-    //   setTweets(tweets => ([...tweets, newItem]))
-    // }
   }
   
 
+  useEffect(()=>{
+    // Name is what we are getting and sending title is the official name
+    const newItem = {
+      id: 29,
+      accountNum: 29,
+      username: 'barbaraJr2',
+      handleName: '@barbaraJr2',
+      img: '/Images/lumine.png', 
+      bgImg: '/Images/backGround.jpeg',
+      msg,
+      profileText: 'Hoping to complete 100 days of code',
+      likes: 0
+    };
+    setMainAccount(newItem)
+  },[])
 
   //? Add a new item to the list of list
   const handleSubmit = (e) => {
     e.preventDefault()
     
     // Name is what we are getting and sending title is the official name
-    const newItem = {id: new Date().getTime().toString(), msg: msg};
+    const newItem = {
+        id: 29,
+        accountNum: 29,
+        username: 'barbaraJr2',
+        handleName: '@barbaraJr2',
+        img: '/Images/lumine.png', 
+        bgImg: '/Images/backGround.jpeg',
+        msg,
+        profileText: 'Hoping to complete 100 days of code',
+        likes: 0
+    };
     setTweets([...tweets, newItem])
     setMsg('')
   } 

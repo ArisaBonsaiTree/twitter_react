@@ -15,18 +15,22 @@ import {
 
 import {AiOutlineHome} from 'react-icons/ai'
 
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import SingleProfile from './pages/SingleProfile'
+
 
 export const links = [
   {
+    
     id: 1,
     url: '/',
-    text: 'home',
+    text: 'Home',
     icon: <AiOutlineHome />,
   },
   {
     id: 2,
-    url: '/profile/:id',
-    text: 'team',
+    url: <Route path={'/profile/:id'} component={SingleProfile}/>,
+    text: 'Profile',
     icon: <FaUserFriends />,
   },
   

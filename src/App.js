@@ -12,9 +12,17 @@ function App(){
     <div>
       <Router>
         <Switch>
-          <Route exact path='/'><Home/></Route>
-          <Route path={'/profile/:id'} component={SingleProfile}><SingleProfile/></Route>
-          <Route path='*'><Error/></Route>
+          <Route exact path='/'>
+            <Home/>
+          </Route>
+          
+          <Route path='/profile/:accountNum' component={SingleProfile}>
+            <SingleProfile/>
+          </Route>
+          
+          <Route path='*'>
+            <Error/>
+          </Route>
         </Switch>
       </Router>
     </div>
