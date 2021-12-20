@@ -1,0 +1,46 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    height: 100%; 
+    max-height: 100%; 
+}
+
+.container{
+    margin: 0 auto;
+    padding: 1rem;
+    max-width: 1000px;
+}
+
+// ? Reset the button styles
+button{
+    border: unset;
+    background: unset;
+    font: unset;
+    color: unset;
+    cursor: pointer;
+}
+
+a{
+    color: unset;
+    text-decoration: unset;
+    @include link();
+}
+
+input, textarea {
+    border: unset;
+    color: unset;
+    background: unset;
+    font: unset;
+}

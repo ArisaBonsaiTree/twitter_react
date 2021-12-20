@@ -1,0 +1,13 @@
+@import '../../style/mixins.scss';
+
+.sidebar{
+    position: absolute;
+    top: 0;
+    bottom: 0; 
+    left: 0;
+    width: 200px; /*Width of frame div*/
+    height: 100%;
+    // overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
+    background: aqua;
+    color: var(--text-light-color);
+}
