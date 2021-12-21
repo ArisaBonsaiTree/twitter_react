@@ -12,13 +12,9 @@ Axios.defaults.withCredentials = true
 
 function App(){
   return(
-    <UserContextProvider>
-      <div>
-        <div className="container">
-          <Router/>
-        </div>
-      </div>
-    </UserContextProvider>
+    <div className="container">
+      <Router/>
+    </div> 
   )
 }
 

@@ -10,24 +10,14 @@ import './Sidebar.scss'
 function Sidebar(){
     return (
         <div className='sidebar'>
-            Test
+            <p>Icon</p>
+            <p>Home</p>
+            <p>Explore</p>
+            <p>Notifications</p>
+            <p>Messages</p>
+            <p>Profile</p>
         </div>
     )
 }
 
 export default Sidebar
-
-
-
-// {links.map((link)=>{
-//     const {id, url, text, icon} = link
-//     return (
-//         <div className="links">
-//             {/* key={id} */}
-//             <li>
-//                 <a href={url}>{icon} {text}</a>
-//             </li>
-//         </div>
-//     )
-// })}
-// <FaFeatherAlt className='feather-icon'/>

@@ -10,4 +10,11 @@
     // overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
     background: aqua;
     color: var(--text-light-color);
+
+    p{
+        margin: 1.5rem 0 0 0;
+        display: flex;
+        justify-content: center;
+        color: var(--text-dark-color);
+    }
 }

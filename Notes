@@ -1,0 +1,4 @@
+Process not defined error?
+
+Update this to 5.0.0 to resolve the issue
+npm install react-scripts@latest

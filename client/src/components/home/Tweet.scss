@@ -1,0 +1,14 @@
+@import '../../style/mixins.scss';
+
+.tweet{
+    @include card;
+    margin: 1.5rem 0;
+
+    .header,
+    .message{
+        margin-bottom: 1rem;
+    }
+
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
