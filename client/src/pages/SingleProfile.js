@@ -1,3 +1,5 @@
+// > A user profile page
+
 import React from "react";
 import { useParams, Link, useLocation } from "react-router";
 import data from '../data'

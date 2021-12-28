@@ -1,3 +1,4 @@
+// > Auth middleware the checks to see if the user is logged in and is validated
 const jwt = require('jsonwebtoken')
 
 function auth(req, res, next){

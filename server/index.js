@@ -1,18 +1,25 @@
 const express = require('express')
 const mongoose = require('mongoose')
+// ? Access to send data to our server with only our weblinks
 const cors = require('cors')
+// ? Allows us access to .env files to protect us when we use secret keys
 const dotenv = require('dotenv').config()
+// ? Gives us a cookie that we can use after we validate the user and keep them logged in
 const cookieParser = require('cookie-parser')
-const { off } = require('process')
+
+const morgan = require('morgan')
 
 const app = express()
 
 // * JSON Middleware + Allow you to POST
 app.use(express.json())
+// * A mini-whitelist to what links are and are not allowed to send data
 app.use(cors({
     origin:['http://localhost:3000'],
     credentials: true,
 }))
+
+app.use(morgan('tiny'))
 
 // * Convert cookie strings strings into objects
 app.use(cookieParser())

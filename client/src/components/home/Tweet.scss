@@ -11,4 +11,11 @@
 
     margin-left: 1.5rem;
     margin-right: 1.5rem;
+
+    .btn-delete{
+        @include btn();
+        margin-right: 1rem;
+        background-color: var(--danger-color);
+        color: var(--text-light-color);
+    }
 }

@@ -1,4 +1,4 @@
-// > The format for our website to send Tweets
+// > Where exactly our Tweets will be sent and how they will be handled by the server
 const router = require('express').Router()
 
 // ? Import our Database model for Tweet
@@ -7,7 +7,7 @@ const Tweet = require('../models/tweetModel')
 // ? Middleware to verify the cookies were made from our server
 const auth = require('../middleware/auth')
 
-// ^ Get the Tweets from the Database
+// ^ GET request :: Gives us all the Tweets from our database as json
 router.get('/', async(req, res) => {
     try{
         const tweets = await Tweet.find()
@@ -18,7 +18,7 @@ router.get('/', async(req, res) => {
     }
 })
 
-// ^ Post a Tweet into the database
+// ^ POST request :: Sends a json format to our database
 router.post('/', async(req, res) => {
     try{
         const {header, message} = req.body
@@ -37,7 +37,7 @@ router.post('/', async(req, res) => {
     }
 })
 
-// ^ Delete a Tweet you didn't like
+// ^ DELETE request :: Deletes the Tweet that has that TweetID
 router.delete('/:id', async(req, res) => {
     try{
         const tweetId = req.params.id

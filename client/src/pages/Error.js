@@ -1,3 +1,4 @@
+// > Our error page that is displayed to the user
 import React from "react";
 import { useParams, Link } from "react-router";
 
