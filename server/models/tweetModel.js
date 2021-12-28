@@ -6,6 +6,10 @@ const ObjectId = mongoose.Schema.Types.ObjectId
 const tweetSchema = new mongoose.Schema({
     header: {type: String},
     message: {type: String},
+    user: {
+        type: ObjectId,
+        require: true
+    }
 },{
     timestamps: true
 })

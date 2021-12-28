@@ -9,6 +9,7 @@ const auth = require('../middleware/auth')
 
 // ^ GET request :: Gives us all the Tweets from our database as json
 router.get('/', async(req, res) => {
+    // ? Look into why the auth middleware bugs out here and doesn't display other Tweets
     try{
         const tweets = await Tweet.find()
         res.json(tweets)
@@ -19,12 +20,20 @@ router.get('/', async(req, res) => {
 })
 
 // ^ POST request :: Sends a json format to our database
-router.post('/', async(req, res) => {
+router.post('/', auth, async(req, res) => {
     try{
         const {header, message} = req.body
+
+        if(!message){
+            return res.status(400).json({
+                errorMessage: 'You need to enter a body'
+            })
+        }
         const newTweet = new Tweet({
             header,
-            message
+            message,
+            // * Added the user field to a Tweet. Now each user owns a Tweet
+            user: req.user
         })
 
         const savedTweet = await newTweet.save()
@@ -38,7 +47,7 @@ router.post('/', async(req, res) => {
 })
 
 // ^ DELETE request :: Deletes the Tweet that has that TweetID
-router.delete('/:id', async(req, res) => {
+router.delete('/:id', auth, async(req, res) => {
     try{
         const tweetId = req.params.id
 
@@ -51,6 +60,13 @@ router.delete('/:id', async(req, res) => {
         if(!existingTweeet){
             return res.status(400).json({
                 errorMessage: 'Tweet ID with this ID is not in the database'
+            })
+        }
+
+        // ! Check to see if the Tweet belongs to the user
+        if(existingTweeet.user.toString() !== req.user){
+            return res.status(401).json({
+                errorMessage: 'Unauthorized'
             })
         }
             
