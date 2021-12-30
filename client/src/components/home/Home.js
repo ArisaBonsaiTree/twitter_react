@@ -3,7 +3,7 @@ import React, {useState, useEffect, useContext} from "react";
 import Tweet from './Tweet'
 import './Home.scss'
 import {Link} from 'react-router-dom'
-import TweetMe from './TweetMe'
+import TweetBox from './TweetBox'
 import UserContext from "../../context/UserContext";
 
 const Axios = require('axios')
@@ -12,8 +12,7 @@ const Axios = require('axios')
 function Home(){
     const [tweets, setTweets] = useState([])
 
-    // TODO: Fix the user object with auth
-    // const {user} = useContext(UserContext)
+    const {user} = useContext(UserContext)
     
     useEffect(()=>{
         getTweets()
@@ -45,13 +44,22 @@ function Home(){
 
     return(
         <div className="home">
-            <TweetMe
-                getTweetsFunction={getTweets}
-            />
+            {
+                user ? 
+                <TweetBox
+                    getTweetsFunction={getTweets} 
+                /> 
+                : 
+                <p className='no-tweets-msg'>Please log in or register an account</p>
+            }
 
 
-            {tweets.length > 0 ? renderTweets()
-            : false && <p className='no-tweets-msg'>No Tweets have been added yet</p>
+            {
+                tweets.length > 0 ? 
+                renderTweets()
+                : 
+                // false && <p className='no-tweets-msg'>No Tweets have been added yet</p>
+                user && <p className='no-tweets-msg'>No Tweets have been added yet</p>
             }
         </div>
     )

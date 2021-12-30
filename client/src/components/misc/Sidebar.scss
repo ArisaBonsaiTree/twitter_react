@@ -27,6 +27,16 @@
         .login{
             margin-left: 0.2rem;
         }
+        .userDisplay{
+            display: flex;
+            flex-direction: column;
+            .btn-logout{
+                @include btn();
+                margin-right: 1rem;
+                background-color: var(--danger-color);
+                color: var(--text-light-color);
+            }
+        }
     }
     p{
         margin: 1.5rem 0 0 0;

@@ -129,7 +129,7 @@ router.get('/loggedIn', (req, res) => {
         }
 
         const validatedUser = jwt.verify(token, process.env.JWT_SECRET)
-
+        
         res.json(validatedUser.id)
         
     }catch(err){

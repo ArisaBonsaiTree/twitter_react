@@ -5,6 +5,7 @@ import Sidebar from "./components/misc/Sidebar";
 import Home from "./components/home/Home";
 
 import Register from "./components/auth/Register";
+import Login from './components/auth/Login'
 
 function RouterPage() {
     return  (
@@ -14,6 +15,10 @@ function RouterPage() {
             <Routes>
                 <Route exact path='/' element={
                     <Home/>
+                }/>
+
+                <Route path='/login' element={
+                    <Login/>
                 }/>
 
                 <Route path='/register' element={

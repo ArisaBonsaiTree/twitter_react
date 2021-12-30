@@ -7,10 +7,24 @@
     bottom: 0; // Doesn't really show a difference
     left: 18.5%; // How far left we want this to appear
 
-    width: 100%;
-    height: 100vh;
+    // width: 100vw;
+    width: 78vw;
+    height: 100vw;
     // overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
     background: var(--primary-color);
     margin-left: 1rem;
     margin-top: 1rem;
+
+    @include card();
+
+    h2{
+        margin-bottom: 1rem;
+        font-size: 1.75rem;
+    }
+    .btn-submit{
+        @include btn();
+        margin-bottom: 1rem;
+        background-color: var(--primary-color);
+        color: var(--text-light-color);
+    }
 }

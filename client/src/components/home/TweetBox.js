@@ -1,17 +1,18 @@
-import React, {useState, useEffect} from "react";
-import './TweetMe.scss'
+import React, {useState, useEffect, useContext} from "react";
+import './TweetBox.scss'
+import UserContext from "../../context/UserContext";
 
 const Axios = require('axios')
 
-function TweetMe({getTweetsFunction}) {
+function TweetBox({getTweetsFunction}) {
     
-    const[tweetHeader, setTweetHeader] = useState('')
     const[tweetMessage, setTweetMessage] = useState('')
 
     const [didSubmit, setDidSubmit] = useState(false)
+    
+    const {user} = useContext(UserContext)
 
     useEffect(()=>{
-        setTweetHeader('')
         setTweetMessage('')
         setDidSubmit(false)
     }, [didSubmit])
@@ -19,9 +20,8 @@ function TweetMe({getTweetsFunction}) {
     async function submitTweet(e){
         e.preventDefault()
 
-        console.log('I work')
         const tweetData = {
-            header: tweetHeader,
+            header: user,
             message: tweetMessage
         }
         
@@ -29,7 +29,6 @@ function TweetMe({getTweetsFunction}) {
             await Axios.post('http://localhost:5000/tweet', tweetData)
             setDidSubmit(true)
         }catch(err){
-            console.log('ERROR')
             return
         }
 
@@ -39,13 +38,6 @@ function TweetMe({getTweetsFunction}) {
     return  (
         <div className="tweet-div">
             <form className='form' onSubmit={submitTweet}>
-                <input 
-                    placeholder="Header"
-                    id='tweet-header' 
-                    type="text" 
-                    value={tweetHeader} 
-                    onChange={(e)=> setTweetHeader(e.target.value)}
-                />
                 <input
                     id='tweet-message' 
                     value={tweetMessage} 
@@ -59,4 +51,4 @@ function TweetMe({getTweetsFunction}) {
     )
 };
 
-export default TweetMe;
+export default TweetBox;

@@ -23,7 +23,7 @@ function Register(){
     const navigate = useNavigate()
 
     async function register(e){
-        e.preventDafault()
+        e.preventDefault()
 
         const registerData = {
             email: formEmail,
@@ -32,7 +32,7 @@ function Register(){
         }
 
         try{
-            await Axios.post(`${domain}/auth`, registerData)
+            await Axios.post(`${domain}/auth/register`, registerData)
         }catch(err){
             if(err.response){
                 if(err.response.data.errorMessage){
@@ -50,9 +50,43 @@ function Register(){
     return (
         <div className="auth-form">
             <h2>Register a new account</h2>
-            <h2>Register a new account</h2>
-            <h2>Register a new account</h2>
-            <h2>Register a new account</h2>
+            {
+                errorMessage && (
+                    <ErrorMessage
+                        message={errorMessage}
+                        clear={() => setErrorMessage(null)}
+                    />
+                )
+            }
+
+            <form className='form' onSubmit={register}>
+                <label htmlFor="form-email">Email</label>
+                <input 
+                    id='form-email'
+                    type="email" 
+                    value={formEmail}
+                    onChange={(e)=> setFormEmail(e.target.value)}
+                />
+
+                <label htmlFor="form-email">Password</label>
+                <input 
+                    id='form-password'
+                    type="password" 
+                    value={formPassword}
+                    onChange={(e)=> setFormPassword(e.target.value)}
+                />
+
+                <label htmlFor="form-email">Verify Password</label>
+                <input 
+                    id='form-passwordVerify'
+                    type="password" 
+                    value={formPasswordVerify}
+                    onChange={(e)=> setFormPasswordVerify(e.target.value)}
+                />
+
+                <button className='btn-submit' type='submit'>Register</button>
+            </form>
+            <p>Already have an account? <Link to='/login'>Login instead</Link></p>
         </div>
     )
 }

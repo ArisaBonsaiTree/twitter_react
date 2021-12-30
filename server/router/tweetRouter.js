@@ -37,7 +37,8 @@ router.post('/', auth, async(req, res) => {
         })
 
         const savedTweet = await newTweet.save()
-
+        {console.log('Hello Peter')}
+        {console.log(req.user)}
         res.json(savedTweet)
 
 

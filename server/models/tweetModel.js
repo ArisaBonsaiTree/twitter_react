@@ -2,6 +2,7 @@
 const mongoose = require('mongoose')
 const ObjectId = mongoose.Schema.Types.ObjectId
 
+const User = require('../models/userModel')
 
 const tweetSchema = new mongoose.Schema({
     header: {type: String},
