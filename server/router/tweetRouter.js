@@ -65,6 +65,7 @@ router.delete('/:id', auth, async(req, res) => {
 
         // ! Check to see if the Tweet belongs to the user
         if(existingTweeet.user.toString() !== req.user){
+            console.log('NULL AND VOID')
             return res.status(401).json({
                 errorMessage: 'Unauthorized'
             })

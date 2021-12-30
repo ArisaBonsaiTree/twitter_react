@@ -5,7 +5,7 @@ const bycrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 // ? POST request :: A user wants to register an account
-router.post('/', async(req, res) => {
+router.post('/register', async(req, res) => {
     try{
         // * Destructure it for ease of access
         const {email, password, passwordVerify} = req.body
@@ -66,6 +66,93 @@ router.post('/', async(req, res) => {
         
     }catch(err){
         res.status(500).send()
+    }
+})
+
+// ? POST request :: A user wants to login to their account
+router.post('/login', async (req, res) => {
+    try{
+        // * Destructure it 
+        const {email, password} = req.body
+
+        // ^ Basic validation before asking the database
+        if(!email || !password){
+            return res.status(400).json({
+                errorMessage: 'Please enter all required fields'
+            })
+        }
+
+        // ^ Get the user account that belongs to that email
+        const existingUser = await User.findOne({email})
+        if(!existingUser){
+            return res.status(401).json({
+                errorMessage: 'Wrong email or password'
+            })
+        }
+
+        // * Compare the password the person gave --> encrypt it and see if it matche
+        const isCorrectPassword = await bycrypt.compare(password, existingUser.passwordHash)
+
+        if(!isCorrectPassword){
+            return res.status(401).json({
+                errorMessage: 'Wrong email or password'
+            })
+        }
+
+        const token = jwt.sign({
+            id: existingUser._id // MongoDB id
+        }, process.env.JWT_SECRET) // * Make sure we are using a token from our server!
+
+        res.cookie('token', token, {
+            httpOnly: true,
+            sameSite: 
+                process.env.NODE_ENV === 'development' ? 'lax' 
+                : process.env.NODE_ENV === 'production' && 'none',
+            secure: 
+                process.env.NODE_ENV === 'development' ? false :
+                process.env.NODE_ENV === 'production' && true
+        }).send()
+
+    }catch(err){
+        res.status(500).send()
+    }
+})
+
+// ? GET request :: Checks to see if the user is already logged in when we load the website
+// * Make it so the user doesn't have to re-login everytime you refresh the page
+router.get('/loggedIn', (req, res) => {
+    try{
+        const token = req.cookies.token
+
+        if(!token){
+            return res.json(null)
+        }
+
+        const validatedUser = jwt.verify(token, process.env.JWT_SECRET)
+
+        res.json(validatedUser.id)
+        
+    }catch(err){
+        return res.json(null)
+    }
+})
+
+// ? GET request :: Delete the cookies/token to sign the user out for the session
+router.get('/logout', (req, res) => {
+    try{
+        res.cookie('token', '', {
+            httpOnly: true,
+            sameSite: 
+                process.env.NODE_ENV === 'development' ? 'lax' 
+                : process.env.NODE_ENV === 'production' && 'none',
+            secure: 
+                process.env.NODE_ENV === 'development' ? false :
+                process.env.NODE_ENV === 'production' && true,
+            expires: new Date(0),
+            
+        }).send()
+    }catch(err){
+        return res.json(null)
     }
 })
 

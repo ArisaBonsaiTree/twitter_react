@@ -2,9 +2,9 @@
 import React, {useState, useEffect, useContext} from "react";
 import Tweet from './Tweet'
 import './Home.scss'
-// import UserContext from '../../context/UserContext'
 import {Link} from 'react-router-dom'
 import TweetMe from './TweetMe'
+import UserContext from "../../context/UserContext";
 
 const Axios = require('axios')
 
@@ -12,6 +12,9 @@ const Axios = require('axios')
 function Home(){
     const [tweets, setTweets] = useState([])
 
+    // TODO: Fix the user object with auth
+    // const {user} = useContext(UserContext)
+    
     useEffect(()=>{
         getTweets()
     }, [])
