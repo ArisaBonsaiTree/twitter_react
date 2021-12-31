@@ -8,9 +8,9 @@ const jwt = require('jsonwebtoken')
 router.post('/register', async(req, res) => {
     try{
         // * Destructure it for ease of access
-        const {email, password, passwordVerify} = req.body
+        const {email, username, password, passwordVerify} = req.body
 
-        if(!email || !password || !passwordVerify){
+        if(!email || !username || !password || !passwordVerify ){
             return res.status(400).json({
                 errorMessage: 'Please enter all required fields'
             })
@@ -29,10 +29,17 @@ router.post('/register', async(req, res) => {
         }
 
         // ^ Check to see if the account even exist in the database
-        const existingUser = await User.findOne({email})
-        if(existingUser){
+        const existingEmail = await User.findOne({email})
+        if(existingEmail){
             return res.status(400).json({
                 errorMessage: 'An account with this email already exist'
+            })
+        }
+
+        const existingUsername = await User.findOne({username})
+        if(existingUsername){
+            return res.status(400).json({
+                errorMessage: 'An account with this username already exist'
             })
         }
 
@@ -43,6 +50,7 @@ router.post('/register', async(req, res) => {
         // ^ Save the user in the database
         const newUser = new User({
             email,
+            username,
             passwordHash
         })
 
@@ -69,6 +77,7 @@ router.post('/register', async(req, res) => {
     }
 })
 
+// TODO FIX LOGIN FOR USERNAME
 // ? POST request :: A user wants to login to their account
 router.post('/login', async (req, res) => {
     try{
@@ -129,8 +138,9 @@ router.get('/loggedIn', (req, res) => {
         }
 
         const validatedUser = jwt.verify(token, process.env.JWT_SECRET)
-        
-        res.json(validatedUser.id)
+        res.json(
+            validatedUser.id
+        )
         
     }catch(err){
         return res.json(null)

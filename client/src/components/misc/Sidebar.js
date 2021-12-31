@@ -11,8 +11,8 @@ import './Sidebar.scss'
 
 
 function Sidebar(){
-    
-    const {user, getUser} = useContext(UserContext)
+    // TODO : PLACE THE USER OBJECT IN THE USER CONTEXT SO WE CAN NARROW IT
+    const {user, getUser, contextUsername} = useContext(UserContext)
 
     async function logout(){
         await Axios.get(`${domain}/auth/logout`)
@@ -36,7 +36,7 @@ function Sidebar(){
                 {
                 user ? 
                     <p className='userDisplay'>
-                        {user}
+                        {user.username}
                         <button className='btn-logout' onClick={logout}>Log out</button>
                     </p>
                     :

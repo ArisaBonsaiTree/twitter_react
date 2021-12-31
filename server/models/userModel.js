@@ -7,6 +7,10 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        username:{
+            type: String,
+            required: true
+        },
         passwordHash: {
             type: String,
             required: true
@@ -16,7 +20,7 @@ const userSchema = new mongoose.Schema(
         timestamps: true
     }
 )
-
+// ? user is what we use to reference in different schema
 const User = mongoose.model('user', userSchema)
 
 module.exports = User

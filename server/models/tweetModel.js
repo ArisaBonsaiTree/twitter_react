@@ -9,7 +9,8 @@ const tweetSchema = new mongoose.Schema({
     message: {type: String},
     user: {
         type: ObjectId,
-        require: true
+        // ? Exactly as the name in const User = .... (THISONE, schema)
+        ref: 'user'
     }
 },{
     timestamps: true

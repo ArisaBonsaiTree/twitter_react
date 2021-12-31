@@ -12,16 +12,21 @@ const Axios = require('axios')
 function Home(){
     const [tweets, setTweets] = useState([])
 
-    const {user} = useContext(UserContext)
+    const {user, setContextUsername} = useContext(UserContext)
+
     
+
     useEffect(()=>{
         getTweets()
     }, [])
 
 
     async function getTweets(){
+        // * Where we set Object {id, header, message, user...}
+        // ? Now we populated the data and have the username inserted
         const tweetRes = await Axios.get('http://localhost:5000/tweet')
         setTweets(tweetRes.data)
+        
     }
 
     // * Order our Tweets to have the newest Tweets on top
@@ -30,7 +35,7 @@ function Home(){
         sortedTweets = sortedTweets.sort((a,b) => {
             return new Date(b.createdAt) - new Date(a.createdAt)
         })
-
+        
         return sortedTweets.map((tweet, i) => {
             return (
                 <Tweet

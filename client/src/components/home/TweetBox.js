@@ -11,6 +11,7 @@ function TweetBox({getTweetsFunction}) {
     const [didSubmit, setDidSubmit] = useState(false)
     
     const {user} = useContext(UserContext)
+    
 
     useEffect(()=>{
         setTweetMessage('')
@@ -19,7 +20,7 @@ function TweetBox({getTweetsFunction}) {
 
     async function submitTweet(e){
         e.preventDefault()
-
+        console.log(user)
         const tweetData = {
             header: user,
             message: tweetMessage

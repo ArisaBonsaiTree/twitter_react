@@ -13,6 +13,8 @@ import './AuthForm.scss'
 
 function Register(){
     const [formEmail, setFormEmail] = useState('')
+    const [formUsername, setFormUsername] = useState('')
+
     const [formPassword, setFormPassword] = useState('')
     const [formPasswordVerify, setFormPasswordVerify] = useState('')
 
@@ -27,6 +29,7 @@ function Register(){
 
         const registerData = {
             email: formEmail,
+            username: formUsername,
             password: formPassword,
             passwordVerify: formPasswordVerify
         }
@@ -68,7 +71,15 @@ function Register(){
                     onChange={(e)=> setFormEmail(e.target.value)}
                 />
 
-                <label htmlFor="form-email">Password</label>
+                <label htmlFor="form-username">Username</label>
+                <input 
+                    id='form-username'
+                    type="text" 
+                    value={formUsername}
+                    onChange={(e)=> setFormUsername(e.target.value)}
+                />
+
+                <label htmlFor="form-password">Password</label>
                 <input 
                     id='form-password'
                     type="password" 
@@ -76,7 +87,7 @@ function Register(){
                     onChange={(e)=> setFormPassword(e.target.value)}
                 />
 
-                <label htmlFor="form-email">Verify Password</label>
+                <label htmlFor="form-passwordVerify">Verify Password</label>
                 <input 
                     id='form-passwordVerify'
                     type="password" 

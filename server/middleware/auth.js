@@ -16,6 +16,8 @@ function auth(req, res, next){
         // ? validateUser has id: #### || iat: ####
         req.user = validatedUser.id
         
+        
+        
         next()
     }catch(err){
         // ? Tell the user they are unauthorized

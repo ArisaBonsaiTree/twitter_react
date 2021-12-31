@@ -11,7 +11,15 @@ const auth = require('../middleware/auth')
 router.get('/', async(req, res) => {
     // ? Look into why the auth middleware bugs out here and doesn't display other Tweets
     try{
-        const tweets = await Tweet.find()
+        // * populate the name of the value we have ref in
+        // const tweets = await Tweet.find().populate('user')
+
+        // > Now tweets has the populated info with the username
+        // ^ Specify the fields, we don't need everything
+        // > How to populate info
+        // * In Tweet model: user : {type: ObjectId, ref: 'user' <--- same name as mongoose.model('user', userSchema)}
+        // * Now go to tweets and add populate --> path for the target and select to limit what we want
+        const tweets = await Tweet.find().populate({path: 'user', select: ['username']})
         res.json(tweets)
     }
     catch(err){
@@ -21,6 +29,12 @@ router.get('/', async(req, res) => {
 
 // ^ POST request :: Sends a json format to our database
 router.post('/', auth, async(req, res) => {
+    // * req.body/.user???
+    // * In the auth middleware, we create a req.user which stores the user id
+    // * req.body is what we send via json format to the server
+    // * req.user is validateUser.id that we stored in auth
+    // *
+    
     try{
         const {header, message} = req.body
 
@@ -33,12 +47,12 @@ router.post('/', auth, async(req, res) => {
             header,
             message,
             // * Added the user field to a Tweet. Now each user owns a Tweet
-            user: req.user
+            // * This is how we link it?
+            user: req.user,
+            username: req.username
         })
 
-        const savedTweet = await newTweet.save()
-        {console.log('Hello Peter')}
-        {console.log(req.user)}
+        const savedTweet = await newTweet.save()        
         res.json(savedTweet)
 
 
