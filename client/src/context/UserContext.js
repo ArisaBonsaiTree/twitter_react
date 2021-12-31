@@ -12,23 +12,19 @@ const UserContext = createContext()
 function UserContextProvider(props) {    
     const [user, setUser] = useState(undefined)
 
-    const [contextUsername, setContextUsername] = useState('')
-
     async function getUser(){
         const userRes = await Axios.get(`${domain}/auth/loggedIn`)
         setUser(userRes.data)
     }
 
-    async function userData(){
-        
-    }
+    
 
     useEffect(()=>{
         getUser()
     }, [])
 
     return (
-        <UserContext.Provider value={{user, getUser, contextUsername, setContextUsername}}>
+        <UserContext.Provider value={{user, getUser}}>
             {props.children}
         </UserContext.Provider>
     )

@@ -1,6 +1,6 @@
 // > The Tweet object that we broke apart to give it its own function
 import Axios from 'axios'
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 
 import UserContext from '../../context/UserContext'
 
@@ -8,7 +8,7 @@ import './Tweet.scss'
 
 function Tweet({tweetData, getTweetsFunction}){
     
-    const {user} = useContext(UserContext)
+    const {user, setUserObject} = useContext(UserContext)
     
     async function deleteTweet(){
         if(window.confirm('Do you want to delete this Tweet?')){
@@ -17,7 +17,8 @@ function Tweet({tweetData, getTweetsFunction}){
 
         getTweetsFunction()
     }
-
+    
+    
 
     return(
         <div className="tweet">

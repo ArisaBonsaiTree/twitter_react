@@ -147,6 +147,7 @@ router.get('/loggedIn', (req, res) => {
     }
 })
 
+
 // ? GET request :: Delete the cookies/token to sign the user out for the session
 router.get('/logout', (req, res) => {
     try{
@@ -166,6 +167,36 @@ router.get('/logout', (req, res) => {
     }
 })
 
+// ! Express goes by order top down :: It thought :id was logout????
+router.get('/:id', async (req, res) => {
+    const userId = req.params.id
 
+    if(!userId){
+        return res.status(400).json({
+            errorMessage: 'User ID not in the database'
+        })
+    }
+
+    const user = await User.findById(userId)
+
+    if(!user){
+        return res.status(400).json({
+            errorMessage: 'User ID with this ID not in the database'
+        })
+    }
+
+    // if(user.user.toString() !== req.user){
+    //     console.log('NULL AND VOID')
+    //     return res.status(401).json({
+    //         errorMessage: 'Unauthorized'
+    //     })
+    // }
+    
+
+    res.json({
+        email: user.email,
+        username: user.username,
+    })
+})
 
 module.exports = router
