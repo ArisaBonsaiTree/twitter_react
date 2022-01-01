@@ -1,8 +1,9 @@
 # Welcome to my 'Twitter' clone
 
 ## Update Log
-Currently implementing a backend to the 'Twitter' clone
-
+1) Currently implementing a backend to the 'Twitter' clone
+2) Finally have a login and register page. You can actually see your name on the Tweets. You can also delete your own Tweets now
+Plan on changing on how we authenticate and authorize users. The current model isn't really feasible and it's a good way to practice by making my own. By updating this, I plan to have a user profile page displayed in the next git push
 ## Old Version
 
 In this project, I'll attempt to create a Twitter clone using React. I've attempted the same thing using just JS and I didn't have fun.
