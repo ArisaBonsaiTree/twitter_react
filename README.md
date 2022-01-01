@@ -9,7 +9,7 @@ Decided I would like to practice and make a Twitter clone. I've actually made
 ## Development History
 
 * 0.2.2
-    * 
+    * Plan to change the way JWT is set up in this project 
 * 0.2.1
     * Added a login and register page
     * You can see the name of the person who sent the Tweet
