@@ -33,10 +33,10 @@ Current features: Post tweets, like 'other' people tweets, view other people pro
 
 I plan on adding more features once I learn how to integrate MongoDB with ReactJs. 
 
-# Live Demo [v0.1.0]
+## Live Demo [v0.1.0]
 https://arisa-twitter-react.netlify.app/
 
-# Pics [v0.1.0]
+### Pics [v0.1.0]
 ![picOneOfClone](https://user-images.githubusercontent.com/64375555/133488912-eceaba08-b9c4-42de-8cba-df5bd6c08e8c.png)
 ![picTwoOfClone](https://user-images.githubusercontent.com/64375555/133488920-76a84af9-7c12-4a82-8868-e37c5922021d.png)
 
