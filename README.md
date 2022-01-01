@@ -23,7 +23,7 @@ Decided I would like to practice and make a Twitter clone. I've actually made
 * 0.0.1
     * A Twitter clone that was made with EJS, JavaScript, and Bootstrap
 
-## 0.1.0 Release 
+## Current Release v0.1.0
  In this project, I'll attempt to create a Twitter clone using React. I've attempted the same thing using just JS and I didn't have fun.
 This time, I'll use the limited knowledge I have with React to create this 'website'
 
@@ -33,7 +33,7 @@ Current features: Post tweets, like 'other' people tweets, view other people pro
 
 I plan on adding more features once I learn how to integrate MongoDB with ReactJs. 
 
-## Live Demo [v0.1.0]
+### Live Demo [v0.1.0]
 https://arisa-twitter-react.netlify.app/
 
 ### Pics [v0.1.0]
