@@ -25,7 +25,7 @@ function Tweet({tweetData, getTweetsFunction}){
             {<h2 className='header'>{tweetData.user.username}</h2>}
             
             {tweetData.message && <p className='message'>{tweetData.message}</p>}
-            {user === tweetData.user && (
+            {user === tweetData.user._id && (
                 <button className='btn-delete' onClick={deleteTweet}>Delete</button>
             )
             }
