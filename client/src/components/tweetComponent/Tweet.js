@@ -25,10 +25,13 @@ function Tweet({tweetData, getTweetsFunction}){
             
             {tweetData.message && <p className='message'>{tweetData.message}</p>}
             
-            {/* {user.id === tweetData.userId._id && (
-                <button className='btn-delete' onClick={deleteTweet}>Delete</button>
-            )} */}
-            {console.log(tweetData.userId._id)}
+            
+            {user && (
+                user.username === tweetData.userId.username &&
+                    (
+                        <button className='btn-delete' onClick={deleteTweet}>Delete</button>
+                    )
+            )}
             
         </div>
     )

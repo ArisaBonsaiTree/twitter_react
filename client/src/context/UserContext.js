@@ -10,11 +10,10 @@ const Axios = require('axios')
 const UserContext = createContext()
 
 function UserContextProvider(props) {    
-    const [user, setUser] = useState(undefined)
+    const [user, setUser] = useState(null)
 
     async function getUser(){
         const userResId = await Axios.get(`${domain}/auth/loggedIn`)
-        
         setUser(userResId.data)
     }
 

@@ -7,14 +7,13 @@ import { Link } from 'react-router-dom'
 import UserContext from '../../context/UserContext'
 import domain from '../../util/domain'
 
-import ErrorMessage from '../../util/domain'
+import ErrorMessage from '../misc/ErrorMessage'
 
 import './AuthForm.scss'
 
 function Register(){
     const [formEmail, setFormEmail] = useState('')
     const [formUsername, setFormUsername] = useState('')
-
     const [formPassword, setFormPassword] = useState('')
     const [formPasswordVerify, setFormPasswordVerify] = useState('')
 
@@ -38,10 +37,8 @@ function Register(){
             await Axios.post(`${domain}/auth/register`, registerData)
         }catch(err){
             if(err.response){
-                if(err.response.data.errorMessage){
-                    setErrorMessage(err.response.data.errorMessage)
-                }
-            }
+                setErrorMessage(err.response.data.errorMessage)
+            }    
             return
         }
 
@@ -53,14 +50,12 @@ function Register(){
     return (
         <div className="auth-form">
             <h2>Register a new account</h2>
-            {
-                errorMessage && (
-                    <ErrorMessage
-                        message={errorMessage}
-                        clear={() => setErrorMessage(null)}
-                    />
-                )
-            }
+            {errorMessage && (
+                <ErrorMessage
+                    message={errorMessage}
+                    clear={() => setErrorMessage(null)}
+                />
+            )}
 
             <form className='form' onSubmit={register}>
                 <label htmlFor="form-email">Email</label>

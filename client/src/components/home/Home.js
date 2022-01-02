@@ -53,23 +53,15 @@ function Home(){
 
     return(
         <div className="home">
-            {
-                user ? 
+            {user === null ? (
+                <p className='no-tweets-msg'>Please log in or register an account to Tweet</p>
+            ): (
                 <TweetBox
                     getTweetsFunction={getTweets} 
                 /> 
-                : 
-                <p className='no-tweets-msg'>Please log in or register an account</p>
-            }
+            )}
 
-
-            {
-                tweets.length > 0 ? 
-                renderTweets()
-                : 
-                // false && <p className='no-tweets-msg'>No Tweets have been added yet</p>
-                user && <p className='no-tweets-msg'>No Tweets have been added yet</p>
-            }
+            {renderTweets()}
         </div>
     )
 }

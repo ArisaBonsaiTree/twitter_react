@@ -1,17 +1,16 @@
 import Axios from 'axios'
 import React, {useState, useContext} from 'react'
-
 import { useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
 
 import UserContext from '../../context/UserContext'
 import domain from '../../util/domain'
 
-import ErrorMessage from '../../util/domain'
+import ErrorMessage from '../misc/ErrorMessage'
 
 import './AuthForm.scss'
 
-function Register(){
+function Login(){
     const [formEmail, setFormEmail] = useState('')
     const [formPassword, setFormPassword] = useState('')
 
@@ -21,7 +20,7 @@ function Register(){
 
     const navigate = useNavigate()
 
-    async function register(e){
+    async function login(e){
         e.preventDefault()
 
         const loginData = {
@@ -33,10 +32,8 @@ function Register(){
             await Axios.post(`${domain}/auth/login`, loginData)
         }catch(err){
             if(err.response){
-                if(err.response.data.errorMessage){
-                    setErrorMessage(err.response.data.errorMessage)
-                }
-            }
+                setErrorMessage(err.response.data.errorMessage)
+            }    
             return
         }
 
@@ -48,16 +45,14 @@ function Register(){
     return (
         <div className="auth-form">
             <h2>Log in</h2>
-            {
-                errorMessage && (
-                    <ErrorMessage
-                        message={errorMessage}
-                        clear={() => setErrorMessage(null)}
-                    />
-                )
-            }
+            {errorMessage && (
+                <ErrorMessage
+                    message={errorMessage}
+                    clear={() => setErrorMessage(null)}
+                />
+            )}
 
-            <form className='form' onSubmit={register}>
+            <form className='form' onSubmit={login}>
                 <label htmlFor="form-email">Email</label>
                 <input 
                     id='form-email'
@@ -81,4 +76,4 @@ function Register(){
     )
 }
 
-export default Register
+export default Login

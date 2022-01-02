@@ -210,7 +210,7 @@ router.get('/loggedIn', async(req, res) => {
         })
         
     }catch(err){
-        return res.json(undefined)
+        return res.json(null)
     }
 })
 

@@ -14,9 +14,7 @@ function Sidebar(){
     // TODO : PLACE THE USER OBJECT IN THE USER CONTEXT SO WE CAN NARROW IT
     const {user, getUser} = useContext(UserContext)
 
-
     async function logout(){
-        console.log(user)
         await Axios.get(`${domain}/auth/logout`)
         await getUser()
     }
@@ -36,22 +34,21 @@ function Sidebar(){
             
             <div className='authList'>
                 
-                {user === null ? (
+                {user === null || user.username === null? (
                     <p>
                         <Link to='register' className='register'>Register</Link>
                         /
                         <Link to='login' className='login'>Login</Link>
                     </p>
                 ):(
-                    
-                    user && <button className='btn-logout' onClick={logout}>Log out</button>
+                    user && 
+                        <button className='btn-logout' onClick={logout}>
+                            <p><span className='logout-username'>{user.username}</span>Log out</p>
+                        </button>
                 )}
-
-
             </div>
         </div>
     )
-    // ! Fix re-rendering problerm!!!
 }
 
 export default memo(Sidebar)
