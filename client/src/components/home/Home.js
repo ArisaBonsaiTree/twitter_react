@@ -26,7 +26,8 @@ function Home(){
         setTweets(tweetRes.data)
     }
 
-    // * Order our Tweets to have the newest Tweets on top
+    
+    // * Display the newest Tweet on top
     function renderTweets(){
         let sortedTweets = [...tweets]
         sortedTweets = sortedTweets.sort((a,b) => {
@@ -43,6 +44,7 @@ function Home(){
             )
         })
     }
+
 
     return(
         <div className="home">

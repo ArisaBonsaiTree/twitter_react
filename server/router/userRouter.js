@@ -43,10 +43,12 @@ router.post('/register', async(req, res) => {
             })
         }
 
+        // * Needed to hash the password
         // ^ Hash the password :: We do not want to store passwords by itself in the database
         const salt = await bycrypt.genSaltSync(10)
         const passwordHash = await bycrypt.hashSync(password, salt)
 
+        // * Create the user object for the database
         // ^ Save the user in the database
         const newUser = new User({
             email,
@@ -58,19 +60,24 @@ router.post('/register', async(req, res) => {
         const savedUser = await newUser.save()
 
         // ^ Time to create a token for the user
-        const token = jwt.sign({
-            id: savedUser._id
-        }, process.env.JWT_SECRET)
+        const token = jwt.sign(
+            {id: savedUser._id}, // * Grab the id from MongoDB that we just saved in
+            process.env.JWT_SECRET
+        )
 
-        res.cookie('token', token, {
-            httpOnly: true,
-            sameSite:
-                process.env.NODE_ENV === 'development' ? 'lax'
-                : process.env.NODE_ENV === 'production' && 'none',
-            secure:
-                process.env.NODE_ENV === 'development' ? false
-                : process.env.NODE_ENV === 'production' && true
-        }).send()
+        res.cookie(
+            'token', // name we giving it
+            token, // token object we created
+            {
+                httpOnly: true,
+                sameSite:
+                    process.env.NODE_ENV === 'development' ? 'lax'
+                    : process.env.NODE_ENV === 'production' && 'none',
+                secure:
+                    process.env.NODE_ENV === 'development' ? false
+                    : process.env.NODE_ENV === 'production' && true
+            }
+        ).send()
         
     }catch(err){
         res.status(500).send()
@@ -108,19 +115,26 @@ router.post('/login', async (req, res) => {
             })
         }
 
-        const token = jwt.sign({
-            id: existingUser._id // MongoDB id
-        }, process.env.JWT_SECRET) // * Make sure we are using a token from our server!
+        // ^ Create a token for the user
+        const token = jwt.sign(
+            {id: existingUser._id},  // * Grab the _id that matches the user email
+            process.env.JWT_SECRET // * Make sure we are using a token from our server!
+        )
+        // ? token should match exactly the same value as in register
 
-        res.cookie('token', token, {
-            httpOnly: true,
-            sameSite: 
-                process.env.NODE_ENV === 'development' ? 'lax' 
-                : process.env.NODE_ENV === 'production' && 'none',
-            secure: 
-                process.env.NODE_ENV === 'development' ? false :
-                process.env.NODE_ENV === 'production' && true
-        }).send()
+        res.cookie(
+            'token', 
+            token, 
+            {
+                httpOnly: true,
+                sameSite: 
+                    process.env.NODE_ENV === 'development' ? 'lax' 
+                    : process.env.NODE_ENV === 'production' && 'none',
+                secure: 
+                    process.env.NODE_ENV === 'development' ? false :
+                    process.env.NODE_ENV === 'production' && true
+            }
+        ).send()
 
     }catch(err){
         res.status(500).send()
@@ -129,6 +143,9 @@ router.post('/login', async (req, res) => {
 
 // ? GET request :: Checks to see if the user is already logged in when we load the website
 // * Make it so the user doesn't have to re-login everytime you refresh the page
+// ! This is litterally the midleware we have already...
+// ? In .logged in, we return a json called validatedUser.id
+// ? In the middleware, we place the id in a variable called user in req
 router.get('/loggedIn', (req, res) => {
     try{
         const token = req.cookies.token
@@ -137,9 +154,14 @@ router.get('/loggedIn', (req, res) => {
             return res.json(null)
         }
 
-        const validatedUser = jwt.verify(token, process.env.JWT_SECRET)
+        const validatedUser = jwt.verify(
+            token, 
+            process.env.JWT_SECRET
+        )
+        
+        // json places them in [nameOfThingWeUsedToCallThis].data.[userId]
         res.json(
-            validatedUser.id
+            {userId: validatedUser.id}
         )
         
     }catch(err){
@@ -151,17 +173,21 @@ router.get('/loggedIn', (req, res) => {
 // ? GET request :: Delete the cookies/token to sign the user out for the session
 router.get('/logout', (req, res) => {
     try{
-        res.cookie('token', '', {
-            httpOnly: true,
-            sameSite: 
-                process.env.NODE_ENV === 'development' ? 'lax' 
-                : process.env.NODE_ENV === 'production' && 'none',
-            secure: 
-                process.env.NODE_ENV === 'development' ? false :
-                process.env.NODE_ENV === 'production' && true,
-            expires: new Date(0),
-            
-        }).send()
+        res.cookie(
+            'token', 
+            '', 
+            {
+                httpOnly: true,
+                sameSite: 
+                    process.env.NODE_ENV === 'development' ? 'lax' 
+                    : process.env.NODE_ENV === 'production' && 'none',
+                secure: 
+                    process.env.NODE_ENV === 'development' ? false :
+                    process.env.NODE_ENV === 'production' && true,
+                expires: new Date(0),
+            }
+        ).send()
+        
     }catch(err){
         return res.json(null)
     }
