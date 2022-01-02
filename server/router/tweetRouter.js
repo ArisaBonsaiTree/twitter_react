@@ -7,19 +7,13 @@ const Tweet = require('../models/tweetModel')
 // ? Middleware to verify the cookies were made from our server
 const auth = require('../middleware/auth')
 
-// ^ GET request :: Gives us all the Tweets from our database as json
+// ^ GET request :: Gives a json object with all the Tweets
 router.get('/', async(req, res) => {
-    // ? Look into why the auth middleware bugs out here and doesn't display other Tweets
     try{
-        // * populate the name of the value we have ref in
-        // const tweets = await Tweet.find().populate('user')
-
-        // > Now tweets has the populated info with the username
-        // ^ Specify the fields, we don't need everything
-        // > How to populate info
-        // * In Tweet model: user : {type: ObjectId, ref: 'user' <--- same name as mongoose.model('user', userSchema)}
-        // * Now go to tweets and add populate --> path for the target and select to limit what we want
-        const tweets = await Tweet.find().populate({path: 'user', select: ['username']})
+        // * Populate the user of tweetModel with the userModel
+        // ? path: Pick the place where the Foreign_Key is located in the model
+        // ? What do we want to populate into that Foreign_Key?
+        const tweets = await Tweet.find().populate({path: 'userId', select: ['username']})
         res.json(tweets)
     }
     catch(err){
@@ -29,29 +23,37 @@ router.get('/', async(req, res) => {
 
 // ^ POST request :: Sends a json format to our database
 router.post('/', auth, async(req, res) => {
-    // * req.body/.user???
-    // * In the auth middleware, we create a req.user which stores the user id
-    // * req.body is what we send via json format to the server
-    // * req.user is validateUser.id that we stored in auth
-    // *
-    
     try{
-        const {header, message} = req.body
+        // * auth middleware is runned first to see if the user is logged in
+        // ? The middleware will look to see if they are logged in
+        
+        // * Destructure what we send
+        const {username, message} = req.body
 
+        // * No message will prevent you
         if(!message){
             return res.status(400).json({
                 errorMessage: 'You need to enter a body'
             })
         }
+
+        // * Place the propert values into the tweetModel
         const newTweet = new Tweet({
-            header,
+            username,
             message,
-            // * Added the user field to a Tweet. Now each user owns a Tweet
-            // * This is how we link it?
-            // * Our model doesn't have any more besides this
-            user: req.user,
+            userId: req.user, // ? The user _id is placed here :: Placed by the auth middleware
         })
+
+        // * Place the Tweet in the database
         const savedTweet = await newTweet.save()        
+        
+        // * Gives us a json response of the Tweet
+        // username
+        // message
+        // userId <-- The user id that is needed to populate it -- [FP]
+        // _id <--- The id of the [PK]
+        // createdAt
+        // updatedAt
         res.json(savedTweet)
 
 
@@ -59,6 +61,9 @@ router.post('/', auth, async(req, res) => {
         res.status(500).send()
     }
 })
+
+
+// ! REFACTOR LATER>>>>>
 
 // ^ DELETE request :: Deletes the Tweet that has that TweetID
 router.delete('/:id', auth, async(req, res) => {

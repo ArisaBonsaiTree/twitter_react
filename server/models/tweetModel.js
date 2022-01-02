@@ -5,11 +5,12 @@ const ObjectId = mongoose.Schema.Types.ObjectId
 const User = require('../models/userModel')
 
 const tweetSchema = new mongoose.Schema({
-    header: {type: String},
+    username: {type: String},
     message: {type: String},
-    user: {
+    userId: {
         type: ObjectId,
         // ? Exactly as the name in const User = .... (THISONE, schema)
+        // * tweetRouter populates this
         ref: 'user'
     }
 },{
