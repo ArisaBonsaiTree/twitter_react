@@ -48,11 +48,9 @@ router.post('/', auth, async(req, res) => {
             message,
             // * Added the user field to a Tweet. Now each user owns a Tweet
             // * This is how we link it?
+            // * Our model doesn't have any more besides this
             user: req.user,
-            username: req.username
         })
-
-        
         const savedTweet = await newTweet.save()        
         res.json(savedTweet)
 

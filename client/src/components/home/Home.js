@@ -39,7 +39,7 @@ function Home(){
                 <Tweet
                     key={i}
                     tweetData={tweet}
-                    getTweetsFunction={getTweets}
+                    getTweets={getTweets}
                 />
             )
         })

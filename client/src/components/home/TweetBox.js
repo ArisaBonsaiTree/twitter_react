@@ -4,7 +4,7 @@ import UserContext from "../../context/UserContext";
 
 const Axios = require('axios')
 
-function TweetBox({getTweetsFunction}) {
+function TweetBox({getTweetsFunction: getTweets}) {
     
     const[tweetMessage, setTweetMessage] = useState('')
 
@@ -32,7 +32,7 @@ function TweetBox({getTweetsFunction}) {
             return
         }
 
-        getTweetsFunction()
+        getTweets()
     }
     
     return  (

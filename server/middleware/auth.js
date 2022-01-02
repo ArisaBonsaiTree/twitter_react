@@ -18,6 +18,7 @@ function auth(req, res, next){
         )
         // ? Set in the request object a user key that has the value id :: REQ is an object that we can add to it
         // ? validateUser has id: #### || iat: ####
+        // req.user = validatedUser.id
         req.user = validatedUser.id
         
         // ? req.user is passed from this middleware to the next value

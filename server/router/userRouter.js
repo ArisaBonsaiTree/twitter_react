@@ -61,7 +61,10 @@ router.post('/register', async(req, res) => {
 
         // ^ Time to create a token for the user
         const token = jwt.sign(
-            {id: savedUser._id}, // * Grab the id from MongoDB that we just saved in
+            {
+                id: savedUser._id,
+                test: "Test value",
+            }, // * Grab the id from MongoDB that we just saved in
             process.env.JWT_SECRET
         )
 
