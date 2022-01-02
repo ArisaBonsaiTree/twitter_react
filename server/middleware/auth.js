@@ -1,10 +1,10 @@
-// > Auth middleware the checks to see if the user is logged in and is validated
+// > Checks to see if a person has 'barbter_cookie' in their req.cookies
 const jwt = require('jsonwebtoken')
 
 function auth(req, res, next){
     try{
         // * A user should have a cookie in their req
-        const token = req.cookies.barbter_token
+        const token = req.cookies.barbter_cookie
         
         // * A user doesn't have a cookie in their browser
         if(!token) {

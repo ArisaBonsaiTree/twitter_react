@@ -62,42 +62,46 @@ router.post('/', auth, async(req, res) => {
     }
 })
 
-
-// ! REFACTOR LATER>>>>>
-
 // ^ DELETE request :: Deletes the Tweet that has that TweetID
 router.delete('/:id', auth, async(req, res) => {
+    // ? auth middleware: checks to see if the user has barbter_cookie 
     try{
+        // * Get the TweetID 
         const tweetId = req.params.id
 
+        // * If an id is not present in req.params
         if(!tweetId){
-            return res.status(400).json({errorMessage: 'Tweet ID not in the database'})
+            return res.status(400).json({
+                errorMessage: 'Tweet ID not in the database'
+            })
         }
         
-        const existingTweeet = await Tweet.findById(tweetId)
+        // * Now find a Tweet with that tweetId
+        const existingTweet = await Tweet.findById(tweetId)
 
-        if(!existingTweeet){
+        // * If the id is not in the database; Then that Tweet doesn't exist
+        if(!existingTweet){
             return res.status(400).json({
                 errorMessage: 'Tweet ID with this ID is not in the database'
             })
         }
 
-        // ! Check to see if the Tweet belongs to the user
-        if(existingTweeet.user.toString() !== req.user){
-            console.log('NULL AND VOID')
+        // * Makes sure the Tweet belongs to the user that's logged in
+        if(existingTweet.userId.toString() !== req.user){
             return res.status(401).json({
                 errorMessage: 'Unauthorized'
             })
         }
-            
-        await existingTweeet.delete()
-
-        res.json(existingTweeet)
         
+        // * Delete the Tweet
+        await existingTweet.delete()
+
+        // * Show us what Tweet was deleted
+        res.json(existingTweet)
+
     }catch(err){
         res.status(500).send()
     }
 })
-
 
 module.exports = router

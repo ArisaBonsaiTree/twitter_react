@@ -4,6 +4,8 @@ const User = require('../models/userModel')
 const bycrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
+const auth = require('../middleware/auth')
+
 // ^ POST request :: User wants to register for an account
 router.post('/register', async(req, res) => {
     try{
@@ -81,7 +83,7 @@ router.post('/register', async(req, res) => {
 
         // * A cookie that utilizes the token to allow a user to stay logged in
         res.cookie(
-            'barbter_token', // ? Name of the cookie we are giving it
+            'barbter_cookie', // ? Name of the cookie we are giving it
             token, // ? Where the data from the token will come from
             {
                 httpOnly: true,
@@ -99,31 +101,30 @@ router.post('/register', async(req, res) => {
     }
 })
 
-// ! REFACTOR LATER LOOKING AT tweetRouter now
-
-// TODO FIX LOGIN FOR USERNAME
-// ? POST request :: A user wants to login to their account
+// ^ POST request :: A user wants to login to their account
 router.post('/login', async (req, res) => {
     try{
         // * Destructure it 
         const {email, password} = req.body
 
-        // ^ Basic validation before asking the database
+        // * Basic validation before asking the database
         if(!email || !password){
             return res.status(400).json({
                 errorMessage: 'Please enter all required fields'
             })
         }
 
-        // ^ Get the user account that belongs to that email
+        // * Get the user account that belongs to that email
         const existingUser = await User.findOne({email})
+        
+        // * If a user without that email is sent, send this
         if(!existingUser){
             return res.status(401).json({
                 errorMessage: 'Wrong email or password'
             })
         }
 
-        // * Compare the password the person gave --> encrypt it and see if it matche
+        // * See if the password they gave is the same as an encrypted password
         const isCorrectPassword = await bycrypt.compare(password, existingUser.passwordHash)
 
         if(!isCorrectPassword){
@@ -132,15 +133,16 @@ router.post('/login', async (req, res) => {
             })
         }
 
-        // ^ Create a token for the user
+        // * Create a token for the user
         const token = jwt.sign(
-            {id: existingUser._id},  // * Grab the _id that matches the user email
+            {
+                id: existingUser._id // ? Get MongoDB id and place it in the token
+            },  
             process.env.JWT_SECRET // * Make sure we are using a token from our server!
         )
-        // ? token should match exactly the same value as in register
 
         res.cookie(
-            'token', 
+            'barbter_cookie', 
             token, 
             {
                 httpOnly: true,
@@ -158,40 +160,12 @@ router.post('/login', async (req, res) => {
     }
 })
 
-// ? GET request :: Checks to see if the user is already logged in when we load the website
-// * Make it so the user doesn't have to re-login everytime you refresh the page
-// ! This is litterally the midleware we have already...
-// ? In .logged in, we return a json called validatedUser.id
-// ? In the middleware, we place the id in a variable called user in req
-router.get('/loggedIn', (req, res) => {
-    try{
-        const token = req.cookies.token
-
-        if(!token){
-            return res.json(null)
-        }
-
-        const validatedUser = jwt.verify(
-            token, 
-            process.env.JWT_SECRET
-        )
-        
-        // json places them in [nameOfThingWeUsedToCallThis].data.[userId]
-        res.json(
-            {userId: validatedUser.id}
-        )
-        
-    }catch(err){
-        return res.json(null)
-    }
-})
-
-
-// ? GET request :: Delete the cookies/token to sign the user out for the session
-router.get('/logout', (req, res) => {
+// ^ GET request :: Delete the cookie 'barbter_cookie from localHost
+// ? You need to be logged in to logout
+router.get('/logout', auth, (req, res) => {
     try{
         res.cookie(
-            'token', 
+            'barbter_cookie', 
             '', 
             {
                 httpOnly: true,
@@ -201,7 +175,7 @@ router.get('/logout', (req, res) => {
                 secure: 
                     process.env.NODE_ENV === 'development' ? false :
                     process.env.NODE_ENV === 'production' && true,
-                expires: new Date(0),
+                expires: new Date(0), // ? This is what clears it
             }
         ).send()
         
@@ -210,36 +184,37 @@ router.get('/logout', (req, res) => {
     }
 })
 
-// ! Express goes by order top down :: It thought :id was logout????
-router.get('/:id', async (req, res) => {
-    const userId = req.params.id
-
-    if(!userId){
-        return res.status(400).json({
-            errorMessage: 'User ID not in the database'
-        })
-    }
-
-    const user = await User.findById(userId)
-
-    if(!user){
-        return res.status(400).json({
-            errorMessage: 'User ID with this ID not in the database'
-        })
-    }
-
-    // if(user.user.toString() !== req.user){
-    //     console.log('NULL AND VOID')
-    //     return res.status(401).json({
-    //         errorMessage: 'Unauthorized'
-    //     })
-    // }
-    
-
-    res.json({
-        email: user.email,
-        username: user.username,
-    })
-})
-
 module.exports = router
+
+// ! IGNORE FOR NOW +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ! IGNORE FOR NOW +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ! IGNORE FOR NOW +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ! May not be needed, will look into later
+
+// ? GET request :: Checks to see if the user is already logged in when we load the website
+// * Make it so the user doesn't have to re-login everytime you refresh the page
+// ! This is litterally the midleware we have already...
+// ? In .logged in, we return a json called validatedUser.id
+// ? In the middleware, we place the id in a variable called user in req
+// router.get('/loggedIn', (req, res) => {
+//     try{
+//         const token = req.cookies.token
+
+//         if(!token){
+//             return res.json(null)
+//         }
+
+//         const validatedUser = jwt.verify(
+//             token, 
+//             process.env.JWT_SECRET
+//         )
+        
+//         // json places them in [nameOfThingWeUsedToCallThis].data.[userId]
+//         res.json(
+//             {userId: validatedUser.id}
+//         )
+        
+//     }catch(err){
+//         return res.json(null)
+//     }
+// })
