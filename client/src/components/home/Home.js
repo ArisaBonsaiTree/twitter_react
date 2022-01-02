@@ -1,9 +1,10 @@
 // > This will be our home page and hold everything together
 import React, {useState, useEffect, useContext} from "react";
-import Tweet from './Tweet'
 import {Link} from 'react-router-dom'
 
-import TweetBox from './TweetBox'
+import Tweet from '../tweetComponent/Tweet'
+import TweetBox from '../tweetComponent/TweetBox'
+
 import UserContext from "../../context/UserContext";
 import domain from "../../util/domain";
 
