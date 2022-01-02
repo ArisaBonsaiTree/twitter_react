@@ -28,7 +28,7 @@ router.post('/', auth, async(req, res) => {
         // ? The middleware will look to see if they are logged in
         
         // * Destructure what we send
-        const {username, message} = req.body
+        const {message} = req.body
 
         // * No message will prevent you
         if(!message){
@@ -39,7 +39,6 @@ router.post('/', auth, async(req, res) => {
 
         // * Place the propert values into the tweetModel
         const newTweet = new Tweet({
-            username,
             message,
             userId: req.user, // ? The user _id is placed here :: Placed by the auth middleware
         })

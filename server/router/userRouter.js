@@ -162,7 +162,7 @@ router.post('/login', async (req, res) => {
 
 // ^ GET request :: Delete the cookie 'barbter_cookie from localHost
 // ? You need to be logged in to logout
-router.get('/logout', auth, (req, res) => {
+router.get('/logout', auth, async(req, res) => {
     try{
         res.cookie(
             'barbter_cookie', 
@@ -184,37 +184,34 @@ router.get('/logout', auth, (req, res) => {
     }
 })
 
+// ^ GET request :: Just like the auth middleware, but now axios can call it
+// ? Not sure what other way to see if a user has the barbter_cookie without entering credentials
+router.get('/loggedIn', async(req, res) => {
+    try{
+        const token = req.cookies.barbter_cookie
+
+        // * Does the cookie even exist?
+        if(!token){
+            return res.json(null)
+        }
+
+        // * Mix the token with JWT_SECRET 
+        const validatedUser = jwt.verify(
+            token, 
+            process.env.JWT_SECRET
+        )
+
+        const existingUser = await User.findById(validatedUser.id)
+        
+        // * Gives us the user email and username 
+        res.json({
+            email: existingUser.email,
+            username: existingUser.username,
+        })
+        
+    }catch(err){
+        return res.json(undefined)
+    }
+})
+
 module.exports = router
-
-// ! IGNORE FOR NOW +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// ! IGNORE FOR NOW +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// ! IGNORE FOR NOW +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// ! May not be needed, will look into later
-
-// ? GET request :: Checks to see if the user is already logged in when we load the website
-// * Make it so the user doesn't have to re-login everytime you refresh the page
-// ! This is litterally the midleware we have already...
-// ? In .logged in, we return a json called validatedUser.id
-// ? In the middleware, we place the id in a variable called user in req
-// router.get('/loggedIn', (req, res) => {
-//     try{
-//         const token = req.cookies.token
-
-//         if(!token){
-//             return res.json(null)
-//         }
-
-//         const validatedUser = jwt.verify(
-//             token, 
-//             process.env.JWT_SECRET
-//         )
-        
-//         // json places them in [nameOfThingWeUsedToCallThis].data.[userId]
-//         res.json(
-//             {userId: validatedUser.id}
-//         )
-        
-//     }catch(err){
-//         return res.json(null)
-//     }
-// })

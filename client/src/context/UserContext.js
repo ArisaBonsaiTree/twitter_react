@@ -13,18 +13,12 @@ function UserContextProvider(props) {
     const [user, setUser] = useState(undefined)
 
     async function getUser(){
-        // ? We get res.json(validatedUser.id) 
-        const userRes = await Axios.get(`${domain}/auth/loggedIn`)
+        const userResId = await Axios.get(`${domain}/auth/loggedIn`)
         
-        // setUser(userRes.data.userId)
-        // ? We get Object {userId: 1231132312132}
-        // * Now that user is set we can access it through out the app
-        setUser(userRes.data)
-
+        setUser(userResId.data)
     }
 
-    
-    // * When we load the app, we get the user and set it [If we login / register it will rerender]
+    // * Loading the app will run getUser()
     useEffect(()=>{
         getUser()
     }, [])
