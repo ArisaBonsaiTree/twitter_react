@@ -18,7 +18,7 @@ function Home(){
     // * Where we store our Tweets and pass down 
     const [tweets, setTweets] = useState([])
 
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     // * Where we store user info for future use
     const {user} = useContext(UserContext)

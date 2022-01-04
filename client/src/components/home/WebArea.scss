@@ -1,12 +1,16 @@
 @import '../../style/mixins.scss';
 
 .web-area{
-    // * Absolute to allow it to be offsetted
+    
     position: relative;
     top: 0; 
     left: 17%; 
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    height: 100vh;
     
-    // overflow: auto; May be needed for scrolls?
+    
 
     // * Display this if no tweets are present :: otherwise we will display tweets
     .no-tweets-msg{

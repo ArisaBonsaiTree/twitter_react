@@ -1,11 +1,17 @@
 import React, {useState, useEffect, createContext} from 'react';
 
 import './SingleProfile.scss'
+import './EditFormSingleProfile.scss'
 
 function SingleProfile({userData}) {
     
-    function editPopup(){
-        console.log('TEST')
+    const [bool, setBool] = useState(false)
+
+    const [edit, setEdit] = useState(false)
+
+    function editPopup(){ 
+        setEdit(!edit)
+
     }
     
     
@@ -45,7 +51,20 @@ function SingleProfile({userData}) {
             <div className='display-tweets-section'>
 
             </div>
-        </section>
+
+            {!edit ? <></> : 
+            <section className='edit-form'>
+                <div className="edit-box">
+                    <div className="top-of-box">
+                        <button onClick={()=>{editPopup()}}>X</button>
+                        <span>Edit Profile</span>
+                        <button onClick={()=>{editPopup()}}>Save</button>
+                    </div>                        
+                </div>                        
+            </section>
+            }        
+    </section>
+    
     )
 };
 

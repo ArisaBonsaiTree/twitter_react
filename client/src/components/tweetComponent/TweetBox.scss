@@ -5,29 +5,49 @@
     // Parent takes left: 17%  100 - 17 = 83 --> 3 + 77 Removes 3%
     left: 3%;
     width: 77%;
+    height: 8em;
+    background-color: white;
+    border: 1px solid black;
     
+
     .form{
-        padding: 1rem;
-        border-radius: 10px;
-        background: var(--light-color);
-        box-shadow: var(--box-shadow);
-        border: 1px solid black;
-    
-        margin-top: 1rem;
-        
-        display: flex;
-        flex-direction: column;
-        align-items: center;
 
-        #tweet-message{
-            
-        }
+        .tweetbox-section{
+            display: flex;
+            flex-direction: row;
 
-        .btn-submit{
-            @include btn();
-            width: 10%;
-            background: var(--primary-color);
-            color: var(--text-light-color);
+            .pfp{
+                width: 10%;
+                height: 5em;
+                img{
+                    width: 100%;
+                    height: 4.8em;
+                    border-radius: 50%;
+                    
+                }
+                
+            }
+            .text-section{
+                width: 90%;
+
+                
+                
+                .tweet-message{
+                    height: 5em;
+                    font-size: 14pt;
+                    width: 100%;
+                    resize: none;
+                }
+                .misc{
+                    .btn-submit{
+                        @include btn();
+                        width: 10%;
+                        background: purple;
+                        color: var(--text-light-color);
+                    }
+                }
+                
+            }
         }
     }
 }

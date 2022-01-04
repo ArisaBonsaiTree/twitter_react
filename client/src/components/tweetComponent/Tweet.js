@@ -22,13 +22,13 @@ function Tweet({tweetData, getTweetsFunction}){
     
     // ? Go to tweetRouter.js > router.get('/') to populate Tweets and display user attributes
     return(
-        <div className="tweet">
+        <section className="tweet">
             
             <div className="tweet-image-area">
                 <img className='tweet-pfp' src={tweetData.userId.profilePicture}/>
             </div>
             
-            <div className="tweet-text-area">
+            <section className="tweet-area">
                 <div className="header">
                     <span className='username'>{tweetData.userId.username}</span>
                     <span className='handleName'>@{tweetData.userId.username}</span>
@@ -41,21 +41,24 @@ function Tweet({tweetData, getTweetsFunction}){
                 <div className="likesMisc">
 
                 </div>
+                <div className="del-btn-area">
+                    {user && (
+                    
+                        user.username === tweetData.userId.username &&
+                        (
+                            <button className='btn-delete' onClick={deleteTweet}>Delete</button>
+                        )
+                    )}
+                </div>
                 
-                
-            </div>
+            </section>
             
             
             
             
-            {user && (
-                user.username === tweetData.userId.username &&
-                    (
-                        <button className='btn-delete' onClick={deleteTweet}>Delete</button>
-                    )
-            )}
             
-        </div>
+            
+        </section>
     )
 }
 

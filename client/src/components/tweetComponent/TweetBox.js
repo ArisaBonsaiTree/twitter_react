@@ -37,25 +37,35 @@ function TweetBox({getTweetsFunction: getTweets}) {
     }
     
     return  (
+        
+
         <section className="submit-tweet-box">
             <form className='form' onSubmit={submitTweet}>
-                <div className="pfp-text">
+                
+                <section className="tweetbox-section">
+                    
                     <div className="pfp">
-            
+                        <img src={user.profilePicture} alt="" />
                     </div>
                     
-                    <div className="text-input">
-                        <input
-                            id='tweet-message' 
+                    <section className="text-section">
+                        <textarea
+                            className='tweet-message' 
                             value={tweetMessage} 
                             placeholder="What's happening?"
                             onChange={(e)=> setTweetMessage(e.target.value)}
+                            maxLength='316'
                         />
-                    </div>
-                </div>
-                <div className="misc">
-                    <button className='btn-submit' type='submit'>Tweet</button>
-                </div>
+
+                        <div className="misc">
+                            <button className='btn-submit' type='submit'>Tweet</button>
+                        </div>
+                    </section>
+
+                    
+                </section>
+                
+                
                 
             </form>
         </section>
