@@ -3,10 +3,9 @@
 .home{
     position: absolute;
     top: 0; 
-    left: 200px; /*Set left value to WidthOfFrameDiv*/
-    right: 0;
-    bottom: 0;
-    overflow: auto; 
+    left: 17%; 
+    
+    // overflow: auto; May be needed for scrolls?
 
     .no-tweets-msg{
         margin-top: 6rem;

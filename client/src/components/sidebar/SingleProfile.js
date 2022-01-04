@@ -4,7 +4,12 @@ import './SingleProfile.scss'
 
 function SingleProfile({userData}) {
     
-    console.log(userData)
+    function editPopup(){
+        console.log('TEST')
+    }
+    
+    
+    
     return  (
         <section className='profile-section'>
             <div className='profile-background-area'>
@@ -14,7 +19,7 @@ function SingleProfile({userData}) {
 
             <div className='profile-picture-section'>
                 <img className='profile-picture' src={userData.profilePicture} alt='' />
-                <button>Edit profile</button>
+                <button onClick={()=>{editPopup()}}>Edit profile</button>
             </div>
 
             <div className='profile-info-section'>

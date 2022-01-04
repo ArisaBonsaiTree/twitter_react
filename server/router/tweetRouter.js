@@ -13,7 +13,8 @@ router.get('/', async(req, res) => {
         // * Populate the user of tweetModel with the userModel
         // ? path: Pick the place where the Foreign_Key is located in the model
         // ? What do we want to populate into that Foreign_Key?
-        const tweets = await Tweet.find().populate({path: 'userId', select: ['username']})
+        const tweets = await Tweet.find().populate({path: 'userId', select: ['username', 'profilePicture']})
+        // ^ Go here to determine what gets populated!
         res.json(tweets)
     }
     catch(err){

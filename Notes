@@ -11,3 +11,41 @@ Update this to 5.0.0 to resolve the issue
 npm install react-scripts@latest
 
 
+CSS position
+A parent is needed >> p
+A child follows under it >> c
+
+Static: 
+    follow the flow of other elements --> 1,2,3,4 You expect the element to go with that order
+
+Relative: 
+    Nearly the same as static
+    Can change the top/left/right/bottom
+    left: 10px <-- Left side is 10px away from the left
+    Overflows!
+    Won't push around static elements
+
+    ? Now we have to move all of this down, so position relative isn't really used for top/left/right/bottom
+    USEFUL to set an element relative as a parent for absolute
+
+Relative <--> Absolute work together well
+
+Absolute: Place posistion: absolute in child-one
+    A ghost block?
+    The other child IGNORE this
+    Treat it like it doesn't even exist
+    Good for when you want to stick something to it 
+    top? ABSOLUTE POSITION OF THE PARENT CONTAINER
+    The parent? Nope, it's static --> Need a position : realtive, aboslute, stiicky, fixed
+    Now we have realtive a use case
+
+Fixed: Nearly the same as absolute
+    Ignores the parent element -- Even if they have a relative posisition
+
+    FIXED to the entire HTML page
+    Stays at the same place when we scroll
+
+Sticky: Combination of relative/fixed into one
+    A mini dynamic fixed position
+    It's relative by default and becomes fixed when we scroll down
+

@@ -1,16 +1,43 @@
 @import '../../style/mixins.scss';
 
 .tweet{
-    @include card;
-    margin: 1.5rem 0;
+    // @include card;
+    // margin: 1.5rem 1.5rem 0 1.5rem;
+    // margin: 3% 3% 0 3%;
+    margin-top: 1rem;
 
-    .header,
-    .message{
-        margin-bottom: 1rem;
+
+    display: flex;
+    justify-content: flex-start;
+    // flex-direction: row;
+    
+
+    .tweet-image-area{
+        width: 10%;
+        background-color: aquamarine;
+        margin-right: 1%;
+        
+        .tweet-pfp{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
     }
 
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
+    .tweet-text-area{
+        width: 90%;
+        background-color: aqua;
+
+        .header{
+
+        }
+        .message{
+            
+        }
+        .likesMisc{
+
+        }
+    }
 
     .btn-delete{
         @include btn();

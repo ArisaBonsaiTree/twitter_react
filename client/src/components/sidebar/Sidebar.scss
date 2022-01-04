@@ -2,34 +2,52 @@
 
 .sidebar{
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 17%;
+    height: 100%;
     
-    top: 0; // As you can guess this is how high it will be :: 0 is the top
-    bottom: 0; // Doesn't really show a difference
-    left: 0; // How far left we want this to appear
-
-    width: 18.5%;
-    height: 100vh;
-    // overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
     background: aqua;
 
-    // Allows us to separate two divs within the parent div
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    .displayList{
 
+    // ^ Icon, Home, Explore, ...., Profile
+    .displayList{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        left: 12%;
+
+        font-size: 1.5em;
+        p{
+            @media (max-width:898.5px) {
+                position: relative;
+                left: 0;
+                font-size: 75%;
+            }
+        }
+        // @media (max-width: 600px) {
+        //     font-size: 0.78em;
+        // }
     }
+    
+    // ^ Log out button || Display username
     .authList{
         margin-bottom: 1rem;
+        
         .register{
             margin-right: 0.2rem;
         }
         .login{
             margin-left: 0.2rem;
         }
+
         .btn-logout{
             @include btn();
-            margin-right: 1rem;
+            
             background-color: var(--danger-color);
             color: var(--text-light-color);
             margin-left: 3.2rem;
@@ -43,6 +61,7 @@
             }
         }
     }
+
     p{
         margin-top: 1.5rem;
         display: flex;

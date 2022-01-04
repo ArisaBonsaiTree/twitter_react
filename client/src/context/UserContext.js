@@ -14,6 +14,8 @@ function UserContextProvider(props) {
 
     async function getUser(){
         const userResId = await Axios.get(`${domain}/auth/loggedIn`)
+        // ? At server > userRouter.js
+        // Go to router.get('/loggedIn') and set res.json to get more user data
         setUser(userResId.data)
     }
 

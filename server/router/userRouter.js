@@ -209,6 +209,7 @@ router.get('/loggedIn', async(req, res) => {
         res.json({
             email: existingUser.email,
             username: existingUser.username,
+            profilePicture: existingUser.profilePicture
         })
         
     }catch(err){
