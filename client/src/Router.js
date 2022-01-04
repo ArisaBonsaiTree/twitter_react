@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom'
 import Sidebar from "./components/sidebar/Sidebar";
 
-import Home from "./components/home/Home";
+import WebArea from "./components/home/WebArea";
 
 import Register from "./components/auth/Register";
 import Login from './components/auth/Login'
@@ -16,7 +16,7 @@ function RouterPage() {
             
             <Routes className='sidebar-links'>
                 <Route exact path='/' element={
-                    <Home/>
+                    <WebArea/>
                 }/>
 
                 <Route path='profile/:username' element={

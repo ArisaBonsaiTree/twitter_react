@@ -1,27 +1,33 @@
 @import '../../style/mixins.scss';
 
-.form{
-    padding: 1rem;
-    border-radius: 10px;
-    background: var(--light-color);
-    box-shadow: var(--box-shadow);
-    border: 1px solid black;
-
-    margin: 1rem 1.5rem 0 1.5rem;
+.submit-tweet-box{
+    position: relative;
+    // Parent takes left: 17%  100 - 17 = 83 --> 3 + 77 Removes 3%
+    left: 3%;
+    width: 77%;
     
-    display: flex;
-	flex-direction: column;
-	align-items: center;
+    .form{
+        padding: 1rem;
+        border-radius: 10px;
+        background: var(--light-color);
+        box-shadow: var(--box-shadow);
+        border: 1px solid black;
     
-    
-
-    .btn-submit{
-        @include btn();
-        width: 10%;
-        background: var(--primary-color);
-        color: var(--text-light-color);
-    }
-    #tweet-message{
+        margin-top: 1rem;
         
-    }   
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        #tweet-message{
+            
+        }
+
+        .btn-submit{
+            @include btn();
+            width: 10%;
+            background: var(--primary-color);
+            color: var(--text-light-color);
+        }
+    }
 }

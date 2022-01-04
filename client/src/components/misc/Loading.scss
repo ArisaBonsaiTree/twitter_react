@@ -1,7 +1,9 @@
-@import '../../style/loadingStyle.scss';
-
 .loading{
-    @include loadingFont();
+    position: relative;
+
+    font-size: 7rem;
+    margin-top: 2rem;
+    text-align: center;
     // ? variables are in the root, so we have access to it anywhere we go
     color: var(--light-color);
 

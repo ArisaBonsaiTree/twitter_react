@@ -8,13 +8,17 @@ import TweetBox from '../tweetComponent/TweetBox'
 import UserContext from "../../context/UserContext";
 import domain from "../../util/domain";
 
-import './Home.scss'
+import Loading from "../misc/LoadingThing";
+
+import './WebArea.scss'
 
 const Axios = require('axios')
 
 function Home(){
     // * Where we store our Tweets and pass down 
     const [tweets, setTweets] = useState([])
+
+    const [loading, setLoading] = useState(true)
 
     // * Where we store user info for future use
     const {user} = useContext(UserContext)
@@ -47,12 +51,14 @@ function Home(){
                     getTweetsFunction={getTweets}
                 />
             )
-        })
+        }
+        
+        )
     }
 
 
     return(
-        <div className="home">
+        <section className='web-area'>
             {user === null ? (
                 <>
                     <p className='no-tweets-msg'>
@@ -63,13 +69,15 @@ function Home(){
                 
                 
             ): (
-                <TweetBox
-                    getTweetsFunction={getTweets} 
-                /> 
+                <TweetBox getTweetsFunction={getTweets} /> 
             )}
 
-            {renderTweets()}
-        </div>
+            {loading ? (
+                <Loading/>
+            ):
+                renderTweets()
+            }
+        </section>
     )
 }
 
