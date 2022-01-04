@@ -54,7 +54,14 @@ function Home(){
     return(
         <div className="home">
             {user === null ? (
-                <p className='no-tweets-msg'>Please log in or register an account to Tweet</p>
+                <>
+                    <p className='no-tweets-msg'>
+                        Please log in or register an account to Tweet
+                    </p>
+                    
+                </>
+                
+                
             ): (
                 <TweetBox
                     getTweetsFunction={getTweets} 

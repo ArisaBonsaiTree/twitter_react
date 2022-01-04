@@ -1,4 +1,13 @@
+Use percentages for widths NOT FIXED PIXELS
+
+Use em for fonts
+
+rem: root
+em: as is <--- Problem when we nest things
+
 Process not defined error?
 
 Update this to 5.0.0 to resolve the issue
 npm install react-scripts@latest
+
+

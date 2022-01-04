@@ -2,3 +2,4 @@
 .env
 HowToUseJSONWebToken.txt
 HowToUseReqObjectInExpress.txt
+cloudinary.config

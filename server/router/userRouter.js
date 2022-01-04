@@ -64,6 +64,8 @@ router.post('/register', async(req, res) => {
         const newUser = new User({
             email,
             username,
+            profileBanner: 'https://res.cloudinary.com/durogtr7u/image/upload/v1641253201/banner_kbfvfr.png',
+            profilePicture: 'https://res.cloudinary.com/durogtr7u/image/upload/v1641249658/no_pfp_vlrxz1.png',
             passwordHash
         })
 
@@ -211,6 +213,35 @@ router.get('/loggedIn', async(req, res) => {
         
     }catch(err){
         return res.json(null)
+    }
+})
+
+router.get('/:username', async(req, res) => {
+    try{
+
+        const {username} = req.params
+
+        if(!username){
+            return res.status.json({
+                errorMessage: 'No username detected'
+            })
+        }
+
+        
+        const existingUser = await User.findOne({username})
+
+        if(!existingUser){
+            return res.status(401).json({
+                errorMessage: "User doesn't exist"
+            })
+        }
+        return res.json({
+            username: existingUser.username,
+            profileBanner: existingUser.profileBanner,
+            profilePicture: existingUser.profilePicture
+        })
+    }catch(err){
+        return res.json(500).send()
     }
 })
 
