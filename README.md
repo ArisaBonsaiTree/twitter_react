@@ -31,13 +31,11 @@ Decided I would like to practice and make a Twitter clone. I've actually made
 
 ### Live Demo [v0.2.0]
 https://barbter.netlify.app/
-![image](https://user-images.githubusercontent.com/64375555/148319982-8a8a8eae-a848-4a30-93c3-815e139d51bb.png)
-![image](https://user-images.githubusercontent.com/64375555/148320016-40f627a2-bf7f-4d0e-9ee3-33c74c77f055.png)
-
-
 
 ### Pics [v0.2.0]
 ![image](https://user-images.githubusercontent.com/64375555/148319950-a5a66004-504e-4109-a575-6da5671ecf41.png)
+![image](https://user-images.githubusercontent.com/64375555/148319982-8a8a8eae-a848-4a30-93c3-815e139d51bb.png)
+![image](https://user-images.githubusercontent.com/64375555/148320016-40f627a2-bf7f-4d0e-9ee3-33c74c77f055.png)
 
 
 ### Pics [v0.1.0]
