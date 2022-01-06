@@ -60,6 +60,43 @@ router.post('/register', async(req, res) => {
         // * Hash the password using bycrypt
         const passwordHash = await bycrypt.hashSync(password, salt)
 
+        if(username === 'POTUS'){
+            const newUser = new User({
+                email,
+                username,
+                profileBanner: 'https://avatars.githubusercontent.com/u/64375555?s=400&u=b9baf31e30aae183aa3f33d5f927d813d44280ae&v=4',
+                profilePicture: 'https://avatars.githubusercontent.com/u/64375555?s=400&u=b9baf31e30aae183aa3f33d5f927d813d44280ae&v=4',
+                passwordHash
+            })
+            const savedUser = await newUser.save()
+
+            // * ============================================
+            // ^ Create a unique token with the given credentials and a cookie
+            
+            // * A unique key given to this id and only this id with the given credentials
+            const token = jwt.sign(
+                {
+                    id: savedUser._id // ? Get MongoDB id and place it in the token
+                }, 
+                process.env.JWT_SECRET
+            )
+
+            // * A cookie that utilizes the token to allow a user to stay logged in
+            res.cookie(
+                'barbter_cookie', // ? Name of the cookie we are giving it
+                token, // ? Where the data from the token will come from
+                {
+                    httpOnly: true,
+                    sameSite:
+                        process.env.NODE_ENV === 'development' ? 'lax'
+                        : process.env.NODE_ENV === 'production' && 'none',
+                    secure:
+                        process.env.NODE_ENV === 'development' ? false
+                        : process.env.NODE_ENV === 'production' && true
+                }
+            ).send()
+
+        }
         // * Create a user object
         const newUser = new User({
             email,

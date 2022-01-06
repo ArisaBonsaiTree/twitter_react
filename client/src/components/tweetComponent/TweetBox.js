@@ -20,7 +20,7 @@ function TweetBox({getTweetsFunction: getTweets}) {
 
     async function submitTweet(e){
         e.preventDefault()
-        console.log(user)
+        // console.log(user)
         const tweetData = {
             header: user.validatedUser_id,
             message: tweetMessage
