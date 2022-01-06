@@ -115,6 +115,23 @@
                 }
             }
         }
+
+        .edit-form-display{
+
+
+            .edit-username-field{
+
+                .header{
+                    font-weight: bold;
+                    text-decoration: underline;
+                    margin-right: 0.3em;
+                }
+                #form-username{
+                    border: 1px solid black;
+                }
+            }
+        }
+
         button{
             @include btn();
         }

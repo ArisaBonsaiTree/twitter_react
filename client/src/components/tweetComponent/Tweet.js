@@ -1,8 +1,10 @@
 // > The Tweet object that we broke apart to give it its own function
 import Axios from 'axios'
 import React, {useContext, useEffect} from 'react'
+import {Link, Navigate} from 'react-router-dom'
 
 import UserContext from '../../context/UserContext'
+import domain from '../../util/domain'
 
 import './Tweet.scss'
 
@@ -19,6 +21,11 @@ function Tweet({tweetData, getTweetsFunction}){
         }
         getTweetsFunction()
     }
+
+    async function potusDelete(){
+        await Axios.delete(`${domain}/tweet/${tweetData._id}/potus`)
+        getTweetsFunction()
+    }
     
     // ? Go to tweetRouter.js > router.get('/') to populate Tweets and display user attributes
     return(
@@ -30,7 +37,7 @@ function Tweet({tweetData, getTweetsFunction}){
             
             <section className="tweet-area">
                 <div className="header">
-                    <span className='username'>{tweetData.userId.username}</span>
+                    <Link to={`/profile/${tweetData.userId.username}`} className='profile-link'>{tweetData.userId.username}</Link>
                     <span className='handleName'>@{tweetData.userId.username}</span>
                 </div>
                 
@@ -41,15 +48,26 @@ function Tweet({tweetData, getTweetsFunction}){
                 <div className="likesMisc">
 
                 </div>
-                <div className="del-btn-area">
-                    {user && (
-                    
-                        user.username === tweetData.userId.username &&
-                        (
-                            <button className='btn-delete' onClick={deleteTweet}>Delete</button>
-                        )
-                    )}
+                <div className="button-section">
+                    <div className="del-btn-area">
+                        {user && (
+                        
+                            user.username === tweetData.userId.username &&
+                            (
+                                <button className='btn-delete' onClick={deleteTweet}>Delete</button>
+                            )
+                        )}
+                    </div>
+
+                    <div className="potus-del-btn">
+                        {user && (
+                            user.username === 'POTUS' && (
+                                <button className='potus-btn-delete' onClick={potusDelete}>POTUS Delete</button>
+                            )
+                        )}
+                    </div>
                 </div>
+                
                 
             </section>
             

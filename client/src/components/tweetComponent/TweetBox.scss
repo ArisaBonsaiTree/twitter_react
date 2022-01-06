@@ -4,8 +4,9 @@
     position: relative;
     // Parent takes left: 17%  100 - 17 = 83 --> 3 + 77 Removes 3%
     left: 3%;
-    width: 77%;
+    width: 93%;
     height: 8em;
+    margin-top: 2em;
     background-color: white;
     border: 1px solid black;
     
@@ -18,8 +19,10 @@
 
             .pfp{
                 width: 10%;
+                margin: auto;
                 height: 5em;
                 img{
+                    
                     width: 100%;
                     height: 4.8em;
                     border-radius: 50%;

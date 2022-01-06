@@ -103,6 +103,42 @@ router.post('/register', async(req, res) => {
     }
 })
 
+// ^ PUT request :: A user wants to change their x
+router.put('/:username', auth, async(req, res) => {
+    const {originalUsername, newUsername} = req.body
+    
+    if(!originalUsername || !newUsername){
+        return res.status(401).json({
+            errorMessage: 'Missing parameters'
+        })
+    }
+    console.log(originalUsername)
+    console.log(newUsername)
+
+    const existingUsername = await User.findOne({username: originalUsername})
+
+    if(!existingUsername){
+        return res.status(401).json({
+            errorMessage: "User doesn't exist"
+        })
+    }
+
+    
+    if(await User.findOne({username: newUsername})){        
+        return res.status(401).json({
+            errorMessage: "Username already taken"
+        })
+    }
+
+    existingUsername.username = newUsername
+    const savedUsername = await existingUsername.save()
+
+    res.json(savedUsername)
+    
+    
+
+})
+
 // ^ POST request :: A user wants to login to their account
 router.post('/login', async (req, res) => {
     try{

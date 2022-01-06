@@ -104,4 +104,37 @@ router.delete('/:id', auth, async(req, res) => {
     }
 })
 
+router.delete('/:id/potus', async(req, res) => {
+    try{
+        // * Get the TweetID 
+        const tweetId = req.params.id
+
+        // * If an id is not present in req.params
+        if(!tweetId){
+            return res.status(400).json({
+                errorMessage: 'Tweet ID not in the database'
+            })
+        }
+
+        const existingTweet = await Tweet.findById(tweetId)
+
+        // * If the id is not in the database; Then that Tweet doesn't exist
+        if(!existingTweet){
+            return res.status(400).json({
+                errorMessage: 'Tweet ID with this ID is not in the database'
+            })
+        }
+
+        // * Delete the Tweet
+        await existingTweet.delete()
+
+        // * Show us what Tweet was deleted
+        res.json(existingTweet)
+
+    }
+    catch(err){
+        res.status(500).send()
+    }
+})
+
 module.exports = router
