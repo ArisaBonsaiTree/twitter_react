@@ -1,34 +1,83 @@
 @import '../../style/mixins.scss';
 
-.sidebar{
+.entire-sidebar{
     position: absolute;
     top: 0;
     left: 0;
-    width: 17%;
-    height: 100%;
     
-    background: aqua;
+    width: 17%;
+    height: 100vh;
+    border-right:1px solid black ;
 
+    // ? Split the icons with authlist
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
-    // ^ Icon, Home, Explore, ...., Profile
-    .displayList{
+    // * Home, Explore,..., Tweet
+    .sidebar-icons{
+        btn{
+            @include btn();
+        }
+        div:first-child{
+            margin-top: 0.6em;
+        } 
+        .sidebar-bird{
+            color: #1d9bf0;
+            font-size: 1.3em;
+        }
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        
         position: relative;
-        left: 12%;
+        left: 7%;
+        right: 7%;
 
-        font-size: 1.5em;
-        p{
-            @media (max-width:898.5px) {
-                position: relative;
-                left: 0;
-                font-size: 75%;
+        font-size: 1.3em;
+        .home-link,
+        .profile-link{
+            text-decoration: none;
+            border-radius: 10px;
+            &:hover{
+                // box-shadow: var(--box-shadow);
+                box-shadow: var(--box-shadow)
             }
         }
+        
+        p{
+            text-decoration: none;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            span{
+                margin-left: 0.1em;
+                text-align: center;
+            }
+        }
+
+        
+
+        .sidebar-tweet-div{
+            .sidebar-tweet-btn{
+                @include btn();
+                width: 7.3em;
+                height: 1.9em;
+                background-color: #1d9bf0;
+                color: white;
+                border-radius: 20px;
+                font-size: 1.3rem;
+                padding: 7px 7px 7px 7px;
+            }
+        }
+        
+        // p{
+        //     @media (max-width:898.5px) {
+        //         position: relative;
+        //         left: 0;
+        //         font-size: 75%;
+        //     }
+        // }
         // @media (max-width: 600px) {
         //     font-size: 0.78em;
         // }
