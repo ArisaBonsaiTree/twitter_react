@@ -35,7 +35,8 @@ app.use('/tweet', require('./router/tweetRouter'))
 app.use('/auth', require('./router/userRouter'))
 
 // * MongoDB [Local Version for speed]
-mongoose.connect(`mongodb+srv://rosenthal:${process.env.MONGO_PASSWORD}@arisadatabase.wez6h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, 
+// mongoose.connect(`mongodb+srv://rosenthal:${process.env.MONGO_PASSWORD}@arisadatabase.wez6h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, 
+mongoose.connect(`mongodb://localhost:27017/barbter`, 
     (err) => {
         if(err) 
             return console.log(err)

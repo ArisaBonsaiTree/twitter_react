@@ -80,16 +80,46 @@ function Sidebar(){
             
             <div className='sidebar-authlist'>
                 {user === null || user.username === null? (
-                    <p>
-                        <Link to='register' className='register'>Register</Link>
-                        /
-                        <Link to='login' className='login'>Login</Link>
-                    </p>
+                    <>
+                        <div className="register-area">
+                            <p>Join today</p>
+                            <Link to='register' className='register'>Sign up with email</Link>
+                        </div>
+                        <div className="login-area">
+                            <p>Already have an account?</p>
+                            <Link to='login' className='login'>
+                                Sign in
+                            </Link>    
+                        </div>            
+                    </>
+                    
                 ):(
-                    user && 
-                        <button className='btn-logout' onClick={logout}>
-                            <p><span className='logout-username'>{user.username}</span>Log out</p>
-                        </button>
+                    <div className="log-out-area">
+                        {user && 
+                            <div className="mini-user-area">
+                                
+                                <div className="mini-pfp">
+                                    <img src={user.profilePicture} alt="" />
+                                </div>
+
+
+                                <div className="mini-user-info">
+                                    <div className="username-section">
+                                        <span className='logout-username'>@{user.username}</span>
+                                    </div>
+                                    <div className="mini-logout">
+                                        <button className='btn-logout' onClick={logout}>
+                                            <p>Log out</p>
+                                        </button>    
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                        }
+                    </div>
+                    
+                    
                 )}
             </div>
 
