@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from "react";
 import './TweetBox.scss'
 import UserContext from "../../context/UserContext";
+import domain from "../../util/domain";
 
 const Axios = require('axios')
 
@@ -27,7 +28,7 @@ function TweetBox({getTweetsFunction: getTweets}) {
         }
         
         try{
-            await Axios.post('http://localhost:5000/tweet', tweetData)
+            await Axios.post(`${domain}/tweet`, tweetData)
             setDidSubmit(true)
         }catch(err){
             return

@@ -15,7 +15,7 @@ const app = express()
 app.use(express.json())
 // * A mini-whitelist to what links are and are not allowed to send data
 app.use(cors({
-    origin:['http://localhost:3000'],
+    origin:['http://localhost:3000', 'https://barbter.netlify.app'],
     credentials: true,
     exposedHeaders: ['barbter_cookie']
 }))
@@ -35,7 +35,7 @@ app.use('/tweet', require('./router/tweetRouter'))
 app.use('/auth', require('./router/userRouter'))
 
 // * MongoDB [Local Version for speed]
-mongoose.connect(`mongodb://localhost:27017/barbter`, 
+mongoose.connect(`mongodb+srv://rosenthal:${process.env.MONGO_PASSWORD}@arisadatabase.wez6h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, 
     (err) => {
         if(err) 
             return console.log(err)

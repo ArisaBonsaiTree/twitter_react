@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.28.0",

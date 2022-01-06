@@ -17,7 +17,7 @@ function Tweet({tweetData, getTweetsFunction}){
 
     async function deleteTweet(){
         if(window.confirm('Do you want to delete this Tweet?')){
-            await Axios.delete(`http://localhost:5000/tweet/${tweetData._id}`)
+            await Axios.delete(`http://${domain}/tweet/${tweetData._id}`)
         }
         getTweetsFunction()
     }
