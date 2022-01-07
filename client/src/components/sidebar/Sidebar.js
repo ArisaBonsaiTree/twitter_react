@@ -10,7 +10,7 @@ import Register from '../auth/Register'
 
 import './Sidebar.scss'
 
-import {BsTwitter, BsBell, BsEnvelopeOpen, BsPersonFill} from 'react-icons/bs'
+import {BsTwitter, BsBell, BsEnvelopeOpen, BsPersonFill, BsPerson} from 'react-icons/bs'
 import {FaHome} from 'react-icons/fa'
 import {HiOutlineHashtag} from 'react-icons/hi'
 
@@ -56,15 +56,28 @@ function Sidebar(){
                     </p>
                 </div>
                 
-                <p>
-                    {user === null || user.username === null ? (
-                        // <Link to={`/profile/`} className='profile-link'>Profile</Link>
-                        <Link to='register' className='profile-link'><BsPersonFill/><span>Profile</span></Link>
-                    ): (
-                        <Link to={`/profile/${user.username}`} className='profile-link'>Profile</Link>
-                    )}
+                <div className="sidebar-profile">
+                    {user === null || user.username === null ? 
+                        (
                     
-                </p>
+                        <Link to='register' className='profile-link'>
+                            <p>
+                                <BsPerson/><span>Profile</span>
+                            </p>
+                            
+                        </Link>
+                        )
+                        : 
+                        (
+                            <p>
+                                <Link to={`/profile/${user.username}`} className='profile-link'><BsPerson/>Profile</Link>
+                            </p>
+                        
+                    )}
+                </div>
+                    
+                    
+                
 
                 <div className="sidebar-tweet-div">
                     <p>
