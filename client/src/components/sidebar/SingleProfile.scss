@@ -1,30 +1,28 @@
-// @import './sidebar-mixins.scss';
 @import '../../style/mixins.scss';
 
 .profile-section{
-    // @include setDisplay();
-
+    position: relative;
+    left: 17%;
+    width: 83%;
 
     .profile-background-area{
-        
-        // width: 80%;
-        margin: 0 auto;
-        // max-width: 41rem;
-        margin-top: 2rem;   
         .profile-background-img{
-            width: 90%;
+            width: 100%;
+            height: 15em;
+            
         }
     }
 
-    
-    
     .profile-picture-section{
         position: relative;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        
         height: 6.4rem;
-        max-width: 90%;
+        
+
+        
 
         .profile-picture{
             position: relative;
@@ -35,36 +33,47 @@
             width: 11rem;
             height: 11rem;
         }
-        button{
-            @include btn();
-            background-color: white;
-            margin-right: 2%;
-            margin-top: 2%;
-
+        .edit-button{
             height: 40%;
+            border: 1px gray solid;
+            margin-right: 2em;
+            margin-top: 0.5em;
+            border-radius: 20px;
+            width: 7em;
+            transition: background-color 0.1s ease-in;
+            &:hover{
+                background-color: gray;
+            }
+
         }
     }
 
     .profile-info-section{
+        border: 1px gray solid;
+        border-top: none;
+        border-right: none;
+        border-left: none;
         .profile-name{
+            margin-left: 2em;
             .name{
-                font-weight: 900;
+                font-weight: bold;
                 font-size: 2em;
             }
             
             span{
                 display: flex;
                 flex-direction: column;
-                margin-top: 0.7rem;
+                margin-top: 0.2em;
             }
             span:last-child{
                 margin-bottom: 2%;
                 color: rgb(165, 154, 154);
+                margin-top: 0;
             }
         }
         .profile-text-section{
-            width: 85%;
-            height: 10rem;
+            margin-left: 2em ;
+            height: auto;
             background-color: white;
             p{
                 
@@ -72,25 +81,15 @@
         }
 
         .follow-following-section{
-
+            margin: 1em 0 1em 0;
+            margin-left: 2em;
         }
     }
     
-    .display-tweets-section{
-    
-    }
-
     .edit-form{
         position: fixed;
-        
         top: 0;
-        bottom: 0; 
-        left: 0; 
         
-        
-        
-        width: 100%;
-        height: 100vh;
         background-color: rgba(0, 0, 0, 0.2);
     
         display: flex;
@@ -98,8 +97,6 @@
         align-items: center;
     
         
-        
-    
         .edit-box{
             position: relative;
             padding: 32px;

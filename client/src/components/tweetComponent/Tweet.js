@@ -49,7 +49,8 @@ function Tweet({tweetData, getTweetsFunction}){
 
                     <div className="potus-del-btn">
                         {user && (
-                            user.username === 'POTUS' && (
+                            user.username === 'POTUS' && 
+                            (
                                 <button className='potus-btn-delete' onClick={potusDelete}>POTUS Delete</button>
                             )
                         )}
@@ -74,10 +75,11 @@ function Tweet({tweetData, getTweetsFunction}){
                     <div className="del-btn-area">
                         {user && (
                         
-                            user.username === tweetData.userId.username &&
-                            (
+                            user.username === tweetData.userId.username ?
+                            
                                 <button className='btn-delete' onClick={deleteTweet}>Delete</button>
-                            )
+                                :
+                                <button disabled className='hidden-btn-delete' onClick={deleteTweet}>Delete</button>
                         )}
                     </div>
 

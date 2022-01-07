@@ -47,20 +47,24 @@
                 color: #3d3f41;
             }
             .potus-del-btn{
-                display: flex;
-                justify-content: center;
-                
-                
-                padding-top: 2px;
-                background-color: red;
-                color: white;
-                border: 1px solid black;
-                border-radius: 40px;
-                width: 10em;
 
-                &:hover{
-                    box-shadow: var(--box-shadow);
+                .potus-btn-delete{
+                    display: flex;
+                    justify-content: center;
+                    
+                    
+                    padding-top: 2px;
+                    background-color: red;
+                    color: white;
+                    border: 1px solid black;
+                    border-radius: 40px;
+                    width: 10em;
+    
+                    &:hover{
+                        box-shadow: var(--box-shadow);
+                    }
                 }
+                
                 
             }
         }
@@ -78,8 +82,6 @@
             flex-direction: row;
             justify-content: space-between;
             padding-left: 0.3em; 
-            height: 20%;
-            color: gray;
             .reply-btn-area{
 
             }
@@ -97,144 +99,41 @@
             }
 
             .del-btn-area{
-                margin-right: 0.5em;
-                border-radius: 5px;
-                border: 1px gray solid;
-                color: black;
-                padding-top: 0.15em;
-                padding-left: 4px;
-                padding-right: 4px;
-                margin-bottom: 2px;
+                .btn-delete{
+                    margin-right: 0.5em;
+                    border-radius: 5px;
+                    border: 1px gray solid;
+                    color: black;
+                    padding-top: 0.15em;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    margin-bottom: 2px;
+                    &:hover{
+                        background-color: red;
+                        color: white;
+                        box-shadow: var(--box-shadow);
+                    }
+                }
+
+                .hidden-btn-delete{
+                    visibility: hidden;
+                    
+                    margin-right: 0.5em;
+                    border-radius: 5px;
+                    border: 1px gray solid;
+                    color: black;
+                    padding-top: 0.15em;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    margin-bottom: 2px;
+                    
+                }
 
 
-            &:hover{
-                background-color: red;
-                color: white;
-                box-shadow: var(--box-shadow);
-            }
+            
             }
 
             
         }
     }
 }
-
-
-
-// .tweet{    
-//     position: relative;
-//     left: 3%;
-//     width: 93%;
-//     height: 8em;
-//     margin-top: 3rem;
-
-//     display: flex;
-//     flex-direction: row;
-
-//     border: 1px solid black;
-    
-//     .tweet-image-area{
-//         width: 10%;
-//         margin: auto;
-//         height: 5em;
-//         padding-left: 0.5em;
-//             img{
-//                 width: 100%;
-//                 height: 4.8em;
-//                 border-radius: 50%;
-//                 border: 1px solid black;
-//             }
-//     }
-
-//     .tweet-area{
-//         background-color: aqua;
-//         width: 90%;
-//         margin-left: 0.5em;
-//         overflow: hidden;
-//         text-overflow: clip;
-
-        
-//         display: flex;
-//         flex-direction: column;
-//         .header{
-//             height: 25%;
-//             .username{
-//                 margin-left: 0.4em;
-//                 font-weight: bold;
-//             }
-//             .handleName{
-//                 margin-left: 1rem;
-//                 color: gray;
-//             }
-//         }
-//         .message{
-//             height: 65%;
-//             margin-left: 0.4em;
-//             max-width: 95%;
-//             overflow: hidden;
-//             word-wrap: break-word;
-//             font-size: 95%;
-//         }
-//         .button-section{
-//             display: flex;
-//             justify-content: space-between;
-//             .del-btn-area{
-            
-//                 height: 25%;
-//                 margin-left: 0.4em;
-//                 .btn-delete{
-//                     @include btn();
-//                     margin-right: 1rem;
-//                     background-color: var(--danger-color);
-//                     color: var(--text-light-color);
-//                 }
-//             }
-    
-//             .potus-del-btn{
-    
-//                 .potus-btn-delete{
-//                     @include btn();
-//                     margin-right: 1rem;
-//                     background-color: rgb(255, 230, 0);
-//                     color: var(--text-dark-color);
-//                 }
-//             }
-//         }
-
-
-//     }
-
-//     // .tweet-image-area{
-//     //     width: 10%;
-//     //     background-color: aquamarine;
-//     //     margin-right: 1%;
-        
-//     //     .tweet-pfp{
-//     //         display: flex;
-//     //         justify-content: center;
-//     //         width: 100%;
-//     //     }
-//     // }
-
-//     // .tweet-text-area{
-//     //     width: 90%;
-//     //     background-color: aqua;
-
-//     //     .header{
-
-//     //     }
-//     //     .message{
-            
-//     //     }
-//     //     .likesMisc{
-
-//     //     }
-//     // }
-
-//     // .btn-delete{
-//     //     @include btn();
-//     //     margin-right: 1rem;
-//     //     background-color: var(--danger-color);
-//     //     color: var(--text-light-color);
-//     // }
-// }

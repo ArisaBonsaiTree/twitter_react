@@ -11,7 +11,7 @@ const Axios = require('axios')
 
 function SingleProfile({userData}) {
 
-    const {getUser} = useContext(UserContext)
+    const {getUser, user} = useContext(UserContext)
     const [bool, setBool] = useState(false)
 
     const [edit, setEdit] = useState(false)
@@ -24,6 +24,8 @@ function SingleProfile({userData}) {
 
     useEffect(()=>{
         setFormUsername(username)
+        console.log(userData)
+        console.log(user)
     }, [])
 
     async function sendEditForm(e){
@@ -47,15 +49,20 @@ function SingleProfile({userData}) {
     
     return  (
         <section className='profile-section'>
+            
             <div className='profile-background-area'>
                 <img className='profile-background-img' src={userData.profileBanner} alt='' />
-            
             </div>
 
             <div className='profile-picture-section'>
                 <img className='profile-picture' src={userData.profilePicture} alt='' />
-                <button onClick={()=>{setEdit(true)}}>Edit profile</button>
+                {user && (
+                    userData.username === user.username && (
+                        <button className='edit-button' onClick={()=>{setEdit(true)}}>Edit profile</button>
+                    )
+                )}
             </div>
+
 
             <div className='profile-info-section'>
                 <div className="profile-name">
@@ -80,7 +87,7 @@ function SingleProfile({userData}) {
             <div className='display-tweets-section'>
 
             </div>
-
+            
             {!edit ? <></> : 
             <form className='edit-form' onSubmit={sendEditForm}>
                 <div className="edit-box">
