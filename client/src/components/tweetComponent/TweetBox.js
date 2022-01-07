@@ -38,16 +38,10 @@ function TweetBox({getTweetsFunction: getTweets}) {
     }
     
     return  (
-        
-
-        <section className="submit-tweet-box">
             <form className='form' onSubmit={submitTweet}>
-                
-                <section className="tweetbox-section">
-                    
-                    <div className="pfp">
-                        <img src={user.profilePicture} alt="" />
-                    </div>
+                    <section className="pfp-section">
+                        <img className='tweet-pfp' src={user.profilePicture} alt="" />
+                    </section>
                     
                     <section className="text-section">
                         <textarea
@@ -61,15 +55,13 @@ function TweetBox({getTweetsFunction: getTweets}) {
                         <div className="misc">
                             <button className='btn-submit' type='submit'>Tweet</button>
                         </div>
+
                     </section>
 
                     
-                </section>
-                
-                
                 
             </form>
-        </section>
+        
     )
 };
 

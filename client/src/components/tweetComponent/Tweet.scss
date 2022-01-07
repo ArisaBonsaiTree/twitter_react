@@ -47,8 +47,21 @@
                 color: #3d3f41;
             }
             .potus-del-btn{
-                padding-right: 0.8em;
-                padding-top: 0.2em;
+                display: flex;
+                justify-content: center;
+                
+                
+                padding-top: 2px;
+                background-color: red;
+                color: white;
+                border: 1px solid black;
+                border-radius: 40px;
+                width: 10em;
+
+                &:hover{
+                    box-shadow: var(--box-shadow);
+                }
+                
             }
         }
 
