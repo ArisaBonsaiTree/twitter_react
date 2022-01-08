@@ -161,3 +161,70 @@ Upload to Deploys the build folder
 Now clear the cookie
 
 We have the same database with development and production :: Care
+
+=================================================================================
+SASS #15 Media Queries
+=================================================================================
+We want to have it adopt depending on what screen size we have
+
+Create a map of different breakpoints
+$breakpoints:(
+    'xs': 0,
+    'sm': 480px,
+    "md": 720px,
+    "lg": 960px
+)
+
+@mixin xs {
+    @media(min-width: map-get($breakpoints, 'xs')){
+        @content; // If we use this Mixin elsewhere <-- Dont want to recode it>
+    }
+}
+
+
+How to use it??
+@xs {
+    font-size: 10px; // <-- Place what ever properties we want>
+    background-color: red;
+}
+
+
+Import the breakpoints --> @import 'breakpoint'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

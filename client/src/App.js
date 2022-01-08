@@ -7,6 +7,9 @@ import Router from './Router'
 // ? This stylesheet is ran first before all others
 import './style/index.scss'
 
+// ? Resposnive Media Queries
+import './style/breakpoints.scss'
+
 // * Set every Axios call with crendtials to allow cookies
 Axios.defaults.withCredentials = true
 

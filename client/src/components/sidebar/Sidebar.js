@@ -34,25 +34,25 @@ function Sidebar(){
                 
                 <div className="sidebar-home">
                     <p>
-                        <Link to='/' className='home-link'><FaHome/><span>Home</span></Link> 
+                        <Link to='/' className='home-link'><FaHome className='icon'/><span>Home</span></Link> 
                     </p>
                 </div>
 
                 <div className="sidebar-explore">
                     <p>
-                        <HiOutlineHashtag/> <span>Explore</span>
+                        <HiOutlineHashtag className='icon'/> <span>Explore</span>
                     </p>
                 </div>
 
                 <div className="sidebar-notifications">
                     <p>
-                        <BsBell/> <span>Notifications</span>
+                        <BsBell className='icon'/> <span>Notifications</span>
                     </p>
                 </div>
                 
                 <div className="sidebar-messages">
                     <p>
-                        <BsEnvelopeOpen/><span>Messages</span>
+                        <BsEnvelopeOpen className='icon'/><span>Messages</span>
                     </p>
                 </div>
                 
@@ -62,7 +62,7 @@ function Sidebar(){
                     
                         <Link to='register' className='profile-link'>
                             <p>
-                                <BsPerson/><span>Profile</span>
+                                <BsPerson className='icon'/><span>Profile</span>
                             </p>
                             
                         </Link>
@@ -70,7 +70,7 @@ function Sidebar(){
                         : 
                         (
                             <p>
-                                <Link to={`/profile/${user.username}`} className='profile-link'><BsPerson/>Profile</Link>
+                                <Link to={`/profile/${user.username}`} className='profile-link'><BsPerson  className='icon'/><span>Profile</span></Link>
                             </p>
                         
                     )}
