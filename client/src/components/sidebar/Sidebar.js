@@ -29,41 +29,63 @@ function Sidebar(){
             
             <div className='sidebar-interactive'>
                 
-                <div className='icons'>
-                    <Link to='/' className='home-link'><FaHome className='icon'/><span>Home</span></Link> 
+                <section className='icons'>
+                    <div className="home-btn">
+                        <Link to='/' className='home-link' style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                        }}>
+                            <FaHome className='icon'/>
+                            <span>Home</span>
+                        </Link> 
+                    </div>
 
-                    {user === null || user.username === null ? 
-                        (
-                        <Link to='register' className='profile-link'>
-                                <BsPerson className='icon'/><span>Profile</span>                            
-                        </Link>
-                        )
-                        : 
-                        (
-                            <Link to={`/profile/${user.username}`} className='profile-link'><BsPerson  className='icon'/><span>Profile</span></Link>   
-                    )}
-                </div>
+                    <div className="profile-btn">
+                        {user === null || user.username === null ? 
+                            (
+                            <Link to='register' className='profile-link'
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'center'
+                            }}>
+                                    <BsPerson className='icon'/><span>Profile</span>                            
+                            </Link>
+                            )
+                            : 
+                            (
+                                <Link to={`/profile/${user.username}`} className='profile-link'
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'center'
+                                }}>
+                                    <BsPerson  className='icon'/><span>Profile</span></Link>   
+                        )}
+                    </div>
+    
+                </section>
                 
             </div>
             
             
             <div className='sidebar-authlist'>
                 {user === null || user.username === null? (
-                    <>
-                        <div className="register-area">
-                            <p>Join today</p>
-                            <Link to='register' className='register'>Sign up with email</Link>
+                    <section className='log-in-section'>
+                        
+                        <div className="register-area" id='regBtn'>
+                            <Link to='register' className='register' id='regBtn' style={{textDecoration: 'none'}}>
+                                <span id='regBtn'>Sign up with email</span>
+                            </Link>
                         </div>
+
                         <div className="login-area">
-                            <p>Already have an account?</p>
-                            <Link to='login' className='login'>
-                                Sign in
+                            <Link to='login' className='login' style={{textDecoration: 'none'}}>
+                                <span>Sign in</span>
                             </Link>    
                         </div>            
-                    </>
+                    </section>
                     
                 ):(
-                    <div className="log-out-area">
+                    <section className="log-out-section">
                         {user && 
                             <div className="mini-user-area">
                                 
@@ -83,10 +105,9 @@ function Sidebar(){
                                     </div>
                                 </div>
                                 
-                            </div>
-                            
+                            </div>   
                         }
-                    </div>
+                    </section>
                     
                     
                 )}

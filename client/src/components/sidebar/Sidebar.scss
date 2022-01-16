@@ -19,29 +19,92 @@
         height: 100vh;    
         
 
-        background-color: green;
+        
         justify-content: space-between;
 
         // Home, Profile, and Tweet
         .sidebar-interactive{
-            background-color: pink;
-            
+            height: 15%;
+            font-size: 1.9em;
+            span{
+                display: none;
+            }
             .icons{
-                // hide the text of the icons
-                span{
-                    visibility: collapse;
+                .home-btn{
+                    margin-top: 0.4em;
+                    
                 }
-
+                .profile-btn{
+                    margin-top: 1em;
+                }
             }
         }
-        
 
         // Authlist(Sign up/Sign in) div section
         .sidebar-authlist{
-            background-color: red;
-            height: 20%;
+            font-size: 0.6em;
+            text-decoration: none;
+
+            .log-in-section{
+                .register-area{
+                    
+                    @include sidebar-btn();
+                    
+                }
+
+                .login-area{
+                    @include sidebar-btn();
+                    margin-top: 0.5em;
+                    margin-bottom: 1em;
+                }
+            }
+
+
+            .log-out-section{
+                .mini-pfp{
+                    img{
+                        width: 100%;
+                        border-radius: 20px;
+                        border: 1px gray solid;
+                    }
+                }
+
+                .mini-user-info{
+
+                    .username-section{
+                        width: 100%;
+                        margin-top: 0.4em;
+                        span{
+                            // Font changes with screen size now
+                            font-size: 1.9vw;
+                        }
+                    }
+                    .mini-logout{
+                        button{
+                            border-radius: 5px;
+                            border: 1px gray solid;
+                            padding: 0.5em;
+                            margin-top: 0.5em;
+                            background-color: #1d9bf0;
+                            color: white;
+                            width: 100%;
+                            &:hover{
+                                box-shadow: var(--box-shadow);
+                                background-color: red;
+                                color: black;
+                            }
+                        }
+                    }
+                }
+                // Give it space to breath :)
+                padding: 0 0.2em 0 0.2em;
+
+                margin-bottom: 1em;
+            }
         }
     }
+    // > End of small settings
+
 
     
     @include md(){
