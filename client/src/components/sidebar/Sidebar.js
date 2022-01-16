@@ -34,6 +34,7 @@ function Sidebar(){
                         <Link to='/' className='home-link' style={{
                             display: 'flex',
                             justifyContent: 'center',
+                            color: 'gray'
                         }}>
                             <FaHome className='icon'/>
                             <span>Home</span>
@@ -46,7 +47,8 @@ function Sidebar(){
                             <Link to='register' className='profile-link'
                             style={{
                                 display: 'flex',
-                                justifyContent: 'center'
+                                justifyContent: 'center',
+                                color: 'gray'
                             }}>
                                     <BsPerson className='icon'/><span>Profile</span>                            
                             </Link>
@@ -56,7 +58,8 @@ function Sidebar(){
                                 <Link to={`/profile/${user.username}`} className='profile-link'
                                 style={{
                                     display: 'flex',
-                                    justifyContent: 'center'
+                                    justifyContent: 'center',
+                                    color: 'gray'
                                 }}>
                                     <BsPerson  className='icon'/><span>Profile</span></Link>   
                         )}

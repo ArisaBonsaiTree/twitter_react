@@ -17,9 +17,6 @@
         // Size for a small sidebar
         width: 9%;
         height: 100vh;    
-        
-
-        
         justify-content: space-between;
 
         // Home, Profile, and Tweet
@@ -77,6 +74,7 @@
                         span{
                             // Font changes with screen size now
                             font-size: 1.9vw;
+                            color: gray;
                         }
                     }
                     .mini-logout{
@@ -109,26 +107,173 @@
     
     @include md(){
         width: 14%;
-        height: 100vh;
-        border-right:1px solid gray ;
-        background-color: red;
-        span{
-            visibility: visible;
-            // font-size: 0.6em;
-            font-size: 60%;
+        height: 100vh;    
+        justify-content: space-between;
 
+        // Home, Profile, and Tweet
+        .sidebar-interactive{
+            .icons{
+                .home-btn{
+                    font-size: 2.7vw;
+                    margin-top: 0.4em;
+                    
+                }
+                .profile-btn{
+                    font-size: 2.7vw;
+                    margin-top: 1em;
+                }
+            }
+        }
+
+        // Authlist(Sign up/Sign in) div section
+        .sidebar-authlist{
+            font-size: 0.6em;
+            text-decoration: none;
+
+            .log-in-section{
+                .register-area{
+                    
+                    @include sidebar-btn();
+                    
+                }
+
+                .login-area{
+                    @include sidebar-btn();
+                    margin-top: 0.5em;
+                    margin-bottom: 1em;
+                }
+            }
+
+
+            .log-out-section{
+                .mini-pfp{
+                    img{
+                        width: 100%;
+                        border-radius: 50px;
+                        border: 1px gray solid;
+                    }
+                }
+
+                .mini-user-info{
+                    .username-section{
+                        display: flex;
+                        justify-content: center;
+                        width: 100%;
+                        margin-top: 0.4em;
+                        span{
+                            // Font changes with screen size now
+                            color: gray;
+                            font-size: 1.9vw;
+                        }
+                    }
+                    .mini-logout{
+                        button{
+                            border-radius: 5px;
+                            border: 1px gray solid;
+                            padding: 0.5em;
+                            margin-top: 0.5em;
+                            background-color: #1d9bf0;
+                            color: white;
+                            width: 100%;
+                            &:hover{
+                                box-shadow: var(--box-shadow);
+                                background-color: red;
+                                color: black;
+                            }
+                        }
+                    }
+                }
+                // Give it space to breath :)
+                padding: 0 0.2em 0 0.2em;
+
+                margin-bottom: 1em;
+            }
         }
     }
 
     @include lg(){
         width: 17%;
-        height: 100vh;
-        border-right:1px solid gray ;
-        background-color: blue;
-        span{
-            visibility: visible;
-            // font-size: 0.9em;
-            font-size: 100%;
+        height: 100vh;    
+        justify-content: space-between;
+
+        // Home, Profile, and Tweet
+        .sidebar-interactive{
+            .icons{
+                .home-btn{
+                    font-size: 2.7vw;
+                    margin-top: 0.4em;
+                    
+                }
+                .profile-btn{
+                    font-size: 2.7vw;
+                    margin-top: 1em;
+                }
+            }
+        }
+
+        // Authlist(Sign up/Sign in) div section
+        .sidebar-authlist{
+            font-size: 0.6em;
+            text-decoration: none;
+
+            .log-in-section{
+                .register-area{
+                    
+                    @include sidebar-btn();
+                    
+                }
+
+                .login-area{
+                    @include sidebar-btn();
+                    margin-top: 0.5em;
+                    margin-bottom: 1em;
+                }
+            }
+
+
+            .log-out-section{
+                .mini-pfp{
+                    img{
+                        width: 100%;
+                        border-radius: 50px;
+                        border: 1px gray solid;
+                    }
+                }
+
+                .mini-user-info{
+                    .username-section{
+                        display: flex;
+                        justify-content: center;
+                        width: 100%;
+                        margin-top: 0.4em;
+                        span{
+                            // Font changes with screen size now
+                            color: gray;
+                            font-size: 1.9vw;
+                        }
+                    }
+                    .mini-logout{
+                        button{
+                            border-radius: 5px;
+                            border: 1px gray solid;
+                            padding: 0.5em;
+                            margin-top: 0.5em;
+                            background-color: #1d9bf0;
+                            color: white;
+                            width: 100%;
+                            &:hover{
+                                box-shadow: var(--box-shadow);
+                                background-color: red;
+                                color: black;
+                            }
+                        }
+                    }
+                }
+                // Give it space to breath :)
+                padding: 0 0.2em 0 0.2em;
+
+                margin-bottom: 1em;
+            }
         }
     }
 }
