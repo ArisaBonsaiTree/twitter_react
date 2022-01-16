@@ -27,67 +27,23 @@ function Sidebar(){
     return (
         <div className='entire-sidebar'>
             
-            <div className='sidebar-icons'>
-                <div className="sidebar-bird">
-                    <BsTwitter/>
-                </div>
+            <div className='sidebar-interactive'>
                 
-                <div className="sidebar-home">
-                    <p>
-                        <Link to='/' className='home-link'><FaHome className='icon'/><span>Home</span></Link> 
-                    </p>
-                </div>
+                <div className='icons'>
+                    <Link to='/' className='home-link'><FaHome className='icon'/><span>Home</span></Link> 
 
-                <div className="sidebar-explore">
-                    <p>
-                        <HiOutlineHashtag className='icon'/> <span>Explore</span>
-                    </p>
-                </div>
-
-                <div className="sidebar-notifications">
-                    <p>
-                        <BsBell className='icon'/> <span>Notifications</span>
-                    </p>
-                </div>
-                
-                <div className="sidebar-messages">
-                    <p>
-                        <BsEnvelopeOpen className='icon'/><span>Messages</span>
-                    </p>
-                </div>
-                
-                <div className="sidebar-profile">
                     {user === null || user.username === null ? 
                         (
-                    
                         <Link to='register' className='profile-link'>
-                            <p>
-                                <BsPerson className='icon'/><span>Profile</span>
-                            </p>
-                            
+                                <BsPerson className='icon'/><span>Profile</span>                            
                         </Link>
                         )
                         : 
                         (
-                            <p>
-                                <Link to={`/profile/${user.username}`} className='profile-link'><BsPerson  className='icon'/><span>Profile</span></Link>
-                            </p>
-                        
+                            <Link to={`/profile/${user.username}`} className='profile-link'><BsPerson  className='icon'/><span>Profile</span></Link>   
                     )}
                 </div>
-                    
-                    
                 
-
-                <div className="sidebar-tweet-div">
-                    <p>
-                        <button className='sidebar-tweet-btn'>
-                            <span>
-                                Tweet    
-                            </span>
-                        </button>
-                    </p>
-                </div>
             </div>
             
             
