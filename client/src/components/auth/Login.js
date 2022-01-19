@@ -52,7 +52,7 @@ function Login(){
                 />
             )}
 
-            <form className='form' onSubmit={login}>
+            <form className='form-regLog' onSubmit={login}>
                 <label htmlFor="form-email">Email</label>
                 <input 
                     id='form-email'
@@ -68,10 +68,12 @@ function Login(){
                     value={formPassword}
                     onChange={(e)=> setFormPassword(e.target.value)}
                 />
-
+                
+                <p>Don't have an account? <Link to='/register'>Register here</Link></p>
+                
                 <button className='btn-submit' type='submit'>Login</button>
             </form>
-            <p>Don't have an account? <Link to='/register'>Register here</Link></p>
+            
         </div>
     )
 }

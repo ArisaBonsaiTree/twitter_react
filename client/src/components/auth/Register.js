@@ -57,42 +57,53 @@ function Register(){
                 />
             )}
 
-            <form className='form' onSubmit={register}>
-                <label htmlFor="form-email">Email</label>
-                <input 
-                    id='form-email'
-                    type="email" 
-                    value={formEmail}
-                    onChange={(e)=> setFormEmail(e.target.value)}
-                />
+            <form className='form-regLog' onSubmit={register}>
+                <div className="line-up">
+                    <label htmlFor="form-email">Email:</label>
+                    <input 
+                        id='form-email'
+                        type="email" 
+                        value={formEmail}
+                        onChange={(e)=> setFormEmail(e.target.value)}
+                    />
+                </div>
 
-                <label htmlFor="form-username">Username</label>
-                <input 
-                    id='form-username'
-                    type="text" 
-                    value={formUsername}
-                    onChange={(e)=> setFormUsername(e.target.value)}
-                />
+                <div className="line-up">
+                    <label htmlFor="form-username">Username:</label>
+                    
+                    <input 
+                        id='form-username'
+                        type="text" 
+                        value={formUsername}
+                        onChange={(e)=> setFormUsername(e.target.value)}
+                    />
+                </div>
 
-                <label htmlFor="form-password">Password</label>
-                <input 
-                    id='form-password'
-                    type="password" 
-                    value={formPassword}
-                    onChange={(e)=> setFormPassword(e.target.value)}
-                />
+                <div className="line-up">
+                    <label htmlFor="form-password">Password:</label>
+                    <input 
+                        id='form-password'
+                        type="password" 
+                        value={formPassword}
+                        onChange={(e)=> setFormPassword(e.target.value)}
+                    />
+                </div>
+                
+                <div className="line-up">
+                    <label htmlFor="form-passwordVerify">Verify Password:</label>
+                    <input 
+                        id='form-passwordVerify'
+                        type="password" 
+                        value={formPasswordVerify}
+                        onChange={(e)=> setFormPasswordVerify(e.target.value)}
+                    />
+                </div>
 
-                <label htmlFor="form-passwordVerify">Verify Password</label>
-                <input 
-                    id='form-passwordVerify'
-                    type="password" 
-                    value={formPasswordVerify}
-                    onChange={(e)=> setFormPasswordVerify(e.target.value)}
-                />
+                <p>Have an account? <Link to='/login'>Login here</Link></p>
 
                 <button className='btn-submit' type='submit'>Register</button>
             </form>
-            <p>Already have an account? <Link to='/login'>Login instead</Link></p>
+            
         </div>
     )
 }

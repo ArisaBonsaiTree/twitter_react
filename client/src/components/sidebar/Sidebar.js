@@ -74,17 +74,20 @@ function Sidebar(){
                 {user === null || user.username === null? (
                     <section className='log-in-section'>
                         
-                        <div className="register-area" id='regBtn'>
-                            <Link to='register' className='register' id='regBtn' style={{textDecoration: 'none'}}>
+                        
+                        <Link to='register' className='register' id='regBtn' style={{textDecoration: 'none'}}>
+                            <div className="register-area" id='regBtn'>
                                 <span id='regBtn'>Sign up with email</span>
-                            </Link>
-                        </div>
+                            </div>
+                        </Link>
+                        
 
-                        <div className="login-area">
-                            <Link to='login' className='login' style={{textDecoration: 'none'}}>
+
+                        <Link to='login' className='login' style={{textDecoration: 'none'}}>
+                            <div className="login-area">
                                 <span>Sign in</span>
-                            </Link>    
-                        </div>            
+                            </div>            
+                        </Link>    
                     </section>
                     
                 ):(
