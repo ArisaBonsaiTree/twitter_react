@@ -11,6 +11,7 @@ const morgan = require('morgan')
 
 const app = express()
 
+
 // * JSON Middleware + Allow you to POST
 app.use(express.json())
 // * A mini-whitelist to what links are and are not allowed to send data

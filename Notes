@@ -158,6 +158,9 @@ For frontend/client
 npm run build
 Upload to Deploys the build folder
 
+Mini CSS ERROR??? 2.5 breaks things
+npm i -D --save-exact mini-css-extract-plugin@2.4.5
+
 Now clear the cookie
 
 We have the same database with development and production :: Care
