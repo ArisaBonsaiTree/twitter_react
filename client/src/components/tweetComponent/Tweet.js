@@ -39,7 +39,9 @@ function Tweet({tweetData, getTweetsFunction}){
                 <img className='tweet-pfp' src={tweetData.userId.profilePicture}/>
             </section>
             
-            <section className="tweet-area">
+
+            <section className="tweet-glue">
+                
                 <div className="header">
                     <div className="header-info">
                         <Link to={`/profile/${tweetData.userId.username}`} className='profile-link'>{tweetData.userId.username}</Link>
@@ -82,14 +84,12 @@ function Tweet({tweetData, getTweetsFunction}){
                                 <button disabled className='hidden-btn-delete' onClick={deleteTweet}>Delete</button>
                         )}
                     </div>
-
-                    
+    
                 </div>
+
             </section>
 
-            <div className="misc-area">
-
-            </div>
+            
 
             
         </section>

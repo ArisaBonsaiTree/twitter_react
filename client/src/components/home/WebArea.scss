@@ -1,10 +1,21 @@
+@import '../../style/breakpoints.scss';
 @import '../../style/mixins.scss';
 
+// This is the other side of our Sidebar...holds the tweet and tweetbox
 .web-area{
     position: absolute;
     top: 0; 
     right: 0;
-    left: 17%; 
+    @include sm(){
+        left: 9%; 
+    }
+    @include md(){
+        left: 14%; 
+    }
+    @include lg(){
+        left: 17%; 
+    }
+    
     bottom: 0;
     height: 100vh;
     

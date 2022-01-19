@@ -108,18 +108,19 @@
     @include md(){
         width: 14%;
         height: 100vh;    
+        font-size: 0.6em;
         justify-content: space-between;
 
         // Home, Profile, and Tweet
         .sidebar-interactive{
             .icons{
                 .home-btn{
-                    font-size: 2.7vw;
+                    font-size: 2.1vw;
                     margin-top: 0.4em;
                     
                 }
                 .profile-btn{
-                    font-size: 2.7vw;
+                    font-size: 2.1vw;
                     margin-top: 1em;
                 }
             }
@@ -127,7 +128,6 @@
 
         // Authlist(Sign up/Sign in) div section
         .sidebar-authlist{
-            font-size: 0.6em;
             text-decoration: none;
 
             .log-in-section{
@@ -192,6 +192,7 @@
     }
 
     @include lg(){
+        font-size: 0.6em;
         width: 17%;
         height: 100vh;    
         justify-content: space-between;
@@ -200,12 +201,12 @@
         .sidebar-interactive{
             .icons{
                 .home-btn{
-                    font-size: 2.7vw;
+                    font-size: 2.3vw;
                     margin-top: 0.4em;
                     
                 }
                 .profile-btn{
-                    font-size: 2.7vw;
+                    font-size: 2.3vw;
                     margin-top: 1em;
                 }
             }
@@ -233,6 +234,8 @@
 
             .log-out-section{
                 .mini-pfp{
+                    display: flex;
+                    justify-content: center;
                     img{
                         width: 100%;
                         border-radius: 50px;
@@ -277,191 +280,3 @@
         }
     }
 }
-    
-    // // ? Split the icons with authlist
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: space-between;
-
-    // // * Home, Explore,..., Tweet
-    // .sidebar-icons{
-
-    //     btn{
-    //         @include btn();
-    //     }
-        
-    //     // Barbter Icon
-    //     div:first-child{
-    //         margin-top: 0.6em;
-    //     } 
-        
-    //     // Barbter Icon
-    //     .sidebar-bird{
-    //         color: #1d9bf0;
-    //         font-size: 1.3em;
-    //     }
-        
-    //     // Make the icons a column and position them
-    //     display: flex;
-    //     flex-direction: column;
-    //     align-items: flex-start;
-        
-    //     position: relative;
-    //     left: 7%;
-    //     right: 7%;
-
-    //     // Standardized Them to one font
-    //     font-size: 1.3em;
-        
-    //     .home-link,
-    //     .profile-link{
-    //         text-decoration: none;
-    //         border-radius: 10px;
-    //         &:hover{
-    //             // box-shadow: var(--box-shadow);
-    //             box-shadow: var(--box-shadow)
-    //         }
-    //     }
-        
-    //     // All the icons below Barbter Icon
-    //     p{
-    //         margin-top: 1.5rem;
-            
-    //         display: flex;
-    //         justify-content: center;
-    //         color: var(--text-dark-color);
-    //         text-decoration: none;
-    //         display: flex;
-    //         flex-direction: row;
-    //         align-items: center;
-            
-    //         // NEEDED FOR THE ICONS
-    //         @include sm(){
-    //             background-color: red;
-    //             width: 30%;
-                
-    //             span{
-    //                 visibility: collapse;
-    //             }
-    //         }
-
-            
-
-    //         span{
-    //             margin-left: 0.1em;
-    //             text-align: center;
-    //         }
-    //     }
-
-        
-
-    //     .sidebar-tweet-div{
-    //         .sidebar-tweet-btn{
-    //             @include btn();
-    //             width: 7.3em;
-    //             height: 1.9em;
-    //             background-color: #1d9bf0;
-    //             color: white;
-    //             border-radius: 20px;
-    //             font-size: 1.3rem;
-    //             padding: 7px 7px 7px 7px;
-    //         }
-    //     }
-    // }
-    
-    // // ^ Log out button || Display username
-    // .sidebar-authlist{
-    //     height: 25%;
-    //     display: flex;
-    //     flex-direction: column;
-    //     justify-content: space-around;
-        
-    //     align-items: center;
-
-    //     .register-area{
-            
-    //         p{
-    //             margin-left: 2.5em;
-    //             font-weight: 500;
-    //             font-size: 0.95em;
-    //             margin-bottom: 0.7em;
-    //         }
-    //         .register{
-    //             @include btn();
-    //             border-radius: 20px;
-    //             background-color: #1d9bf0;
-    //             color: white;
-    //             text-decoration: none;
-
-    //         }
-    //     }
-
-    //     .login-area{
-            
-            
-    //         p{
-    //             font-weight: 500;
-    //             font-size: 0.95em;
-    //             margin-bottom: 0.7em;
-    //         }
-    //         .login{
-    //             @include btn();
-    //             border-radius: 20px;
-    //             margin-left: 3em;
-    //             background-color: white;
-    //             border: 0.2px gray solid;
-    //             color: #1d9bf0;
-    //             text-decoration: none;
-    //         }
-    //     }
-        
-    //     // * Assume we are using row(default)
-    //     // ? Justify-content: alignment of the x axis
-    //     // ? Align-items: alignment of the y axis
-    //     // ? Align-content: ONLY APPLIES IF MORE THAN ONE ROW [Kinda useless]?
-
-
-    //     // * Display basic user info when they are logged in
-    //     .log-out-area{
-            
-    //         height: 100%;
-    //         width: 100%;
-    //         display: flex;
-    //         align-items: flex-end;
-
-    //         .mini-user-area{
-    //             display: flex;
-    //             flex-direction: row;
-    //             margin-left: 1em;
-    //             margin-bottom: 1em;
-
-    //             .mini-pfp{
-    //                 img{
-    //                     border-radius: 50%;
-    //                     width: 2.5em;
-    //                     height: 90%;
-    //                     margin-right: 0.4em;
-    //                 }
-    //             }
-    //             .mini-user-info{
-    //                 display: flex;
-    //                 flex-direction: column;
-    //                 .username-section{
-    //                     span{
-    //                         color: #a1cee0;
-    //                     }
-    //                 }
-
-    //                 .mini-logout{
-    //                     @include btn();
-    //                     margin-top: 0.3em;
-    //                     border: 1px solid #a1cee0;
-    //                     border-radius: 20px;
-                        
-    //                 }
-    //             }
-    //         }
-
-
-    //     }
-    // }
