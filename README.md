@@ -7,7 +7,9 @@ Decided I would like to practice and make a Twitter clone. I've actually made
 
 
 ## Development History
-
+*0.3.0
+   * Fixed the styling
+   * Media queries implemented
 * 0.2.2
     * Plan to change the way JWT is set up in this project 
     * Can view your own profile
@@ -24,13 +26,14 @@ Decided I would like to practice and make a Twitter clone. I've actually made
 * 0.0.1
     * A Twitter clone that was made with EJS, JavaScript, and Bootstrap
 
-## Current Release v0.2.0
+## Current Release v0.3.0
  This version now has a database and uses Heroku to host the backend. The website is basic and doesn't look the best, but it does the basic task of attempting to be a Twitter clone
 
 
 
-### Live Demo [v0.2.0]
+### Live Demo [v0.3.0]
 https://barbter.netlify.app/
+### Pics [v0.3.0]
 
 ### Pics [v0.2.0]
 ![image](https://user-images.githubusercontent.com/64375555/148320222-d427b611-2b02-43e9-bc61-136c71cc8191.png)
