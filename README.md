@@ -5,6 +5,13 @@
 
 Decided I would like to practice and make a Twitter clone. I've actually made
 
+### Live Demo [v0.3.0]
+https://barbter.netlify.app/
+### Pics [v0.3.0]
+![v3PicOne](https://user-images.githubusercontent.com/64375555/154869868-bcd14543-782b-439d-9049-1885e7768d49.PNG)
+![v3SignIn](https://user-images.githubusercontent.com/64375555/154869870-387526c4-4195-4099-b775-7ac59ed1f4e7.PNG)
+![v3SignedIn](https://user-images.githubusercontent.com/64375555/154869874-26a6f737-ed5e-46f0-9af3-79405eec42d8.PNG)
+
 
 ## Development History
 * 0.3.0
@@ -34,6 +41,10 @@ Decided I would like to practice and make a Twitter clone. I've actually made
 ### Live Demo [v0.3.0]
 https://barbter.netlify.app/
 ### Pics [v0.3.0]
+![v3PicOne](https://user-images.githubusercontent.com/64375555/154869868-bcd14543-782b-439d-9049-1885e7768d49.PNG)
+![v3SignIn](https://user-images.githubusercontent.com/64375555/154869870-387526c4-4195-4099-b775-7ac59ed1f4e7.PNG)
+![v3SignedIn](https://user-images.githubusercontent.com/64375555/154869874-26a6f737-ed5e-46f0-9af3-79405eec42d8.PNG)
+
 
 ### Pics [v0.2.0]
 ![image](https://user-images.githubusercontent.com/64375555/148320222-d427b611-2b02-43e9-bc61-136c71cc8191.png)
