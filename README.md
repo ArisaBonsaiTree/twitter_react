@@ -7,7 +7,7 @@ Decided I would like to practice and make a Twitter clone. I've actually made
 
 
 ## Development History
-*0.3.0
+* 0.3.0
    * Fixed the styling
    * Media queries implemented
 * 0.2.2
